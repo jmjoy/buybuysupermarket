@@ -1,0 +1,32 @@
+[ 2014-12-20T12:28:55+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000092s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001065s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000036s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000101s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008267s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008328s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000260s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000303s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000840s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000887s ]
+
+[ 2014-12-20T13:02:02+08:00 ] 127.0.0.1 /Home/index/__PUBLIC/bootstrap/js/bootstrap.min.js
+ERR: 非法操作:__PUBLIC
+
+[ 2014-12-20T14:09:02+08:00 ] 127.0.0.1 /Home/navbar/
+ERR: 无法加载控制器:Navbar
+
+[ 2014-12-20T14:09:05+08:00 ] 127.0.0.1 /Home/navbar/
+ERR: 无法加载控制器:Navbar
+
+[ 2014-12-20T14:09:06+08:00 ] 127.0.0.1 /Home/navbar-static-top/
+ERR: 无法加载控制器:Navbar-static-top
+
