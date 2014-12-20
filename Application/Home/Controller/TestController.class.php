@@ -1,12 +1,11 @@
 <?php
 
 namespace Home\Controller;
-use Think\Controller;
+use Home\Controller\CommonController;
 
-class TestController extends Controller {
+class TestController extends CommonController {
 	
     public function index(){
-    	echo 'hello world';
     }
     
 }
