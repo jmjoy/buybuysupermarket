@@ -9,4 +9,8 @@ return array(
 	/* URL模式 */
 	'URL_MODEL'			=>  2, 		// 2 (REWRITE  模式);	
 	
+	/* 网站配置 */
+	‘WEB_NAME’			=>	'买买网',
+	‘WEB_TITLE’			=>	'买买网 - 快点买啊！',
+	
 );

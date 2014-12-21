@@ -15,7 +15,7 @@
 		<div class="row" id="header-one">
 		  <!-- 首页LOGO -->
 		  <div class="col-md-3">
-		  	<img src="__PUBLIC__/img/logo.png" class="img-responsive" alt="{$web_title}">
+		  	<a href="{:U('Index/index')}"><img src="__PUBLIC__/img/logo.png" class="img-responsive" alt="{$web_name}"></a>
 		  </div>
 		  <!-- 搜索 -->
 		  <div class="col-md-6" id="header-one-search">
@@ -37,7 +37,7 @@
 			<!-- 全部分类 -->
 			<div class="col-md-3">
 				<div class="panel panel-default">
-				  <div class="panel-heading">全部分类</div>
+				  <div class="panel-heading"><a href="#">全部分类</a></div>
 				  <div class="list-group">
 				  	<for start="0" end="9">
 					<a href="#" class="list-group-item category-item"> Cras justo odio </a>
@@ -92,7 +92,7 @@
 			  	<div class="row">
 			  		<for start="0" end="6" name="j">
 				  	<div class="col-md-2 col-xs-4">
-						<a class="thumbnail">
+						<a class="thumbnail" href="">
 							<img src="__PUBLIC__/upload/goods/2014/12/20/123456.jpg" data-src="holder.js/300x300" alt="商品">
 							<div class="caption">
 								<h6>老鼠药{$i*$j}</h6>
@@ -116,7 +116,7 @@
 			<div class="col-md-4">
 				<div class="panel panel-default">
 				  <div class="panel-heading">
-				    <h3 class="panel-title">分类</h3>
+				    <a href=""><h3 class="panel-title">xxx类</h3></a>
 				  </div>
 				  <div class="panel-body">
 				  	<for start="0" end="4" name="iii">
@@ -124,6 +124,7 @@
 						    <a href="#" class="thumbnail">
 						      <img src="__PUBLIC__/upload/goods/2014/12/20/123456.jpg" data-src="holder.js/100%x180" alt="...">
 						      <h5>老鼠药</h5>
+						      <strong class="color-danger">￥{$j*$i*100}</strong>
 						    </a>
 						</div>
 					</for>

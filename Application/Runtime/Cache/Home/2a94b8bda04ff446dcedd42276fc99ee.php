@@ -58,7 +58,7 @@
 			        <h3 class="modal-title" id="myModalLabel">登陆</h3>
 			      </div>
 			      <div class="modal-body">
-				      <form class="form-signin" role="form">
+				      <form class="form-signin" role="form" action="#" method="post">
 				        <h5 class="form-signin-heading color-danger">用户名(或邮箱、手机)或密码错误</h5>
 				        <input type="text" class="form-control" placeholder="用户名/邮箱/手机号" required autofocus>
 				        <input type="password" class="form-control" placeholder="密码" required>
@@ -91,8 +91,9 @@
 	          </ul>
 	        </li><?php endif; ?>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
+      	<?php if(true): ?><li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">功能大全<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="#">购物车</a></li>
@@ -103,7 +104,8 @@
             <li><a href="#">我的收藏</a></li>
             <li><a href="#">我的评价</a></li>
           </ul>
-        </li>
+        </li><?php endif; ?>
+        <li><a href="##">论坛</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
@@ -113,7 +115,7 @@
 		<div class="row" id="header-one">
 		  <!-- 首页LOGO -->
 		  <div class="col-md-3">
-		  	<img src="/Public/img/logo.png" class="img-responsive" alt="<?php echo ($web_title); ?>">
+		  	<a href="<?php echo U('Index/index');?>"><img src="/Public/img/logo.png" class="img-responsive" alt="<?php echo ($web_name); ?>"></a>
 		  </div>
 		  <!-- 搜索 -->
 		  <div class="col-md-6" id="header-one-search">
@@ -135,9 +137,9 @@
 			<!-- 全部分类 -->
 			<div class="col-md-3">
 				<div class="panel panel-default">
-				  <div class="panel-heading">全部分类</div>
+				  <div class="panel-heading"><a href="#">全部分类</a></div>
 				  <div class="list-group">
-				  	<?php $__FOR_START_1883418402__=0;$__FOR_END_1883418402__=9;for($i=$__FOR_START_1883418402__;$i < $__FOR_END_1883418402__;$i+=1){ ?><a href="#" class="list-group-item category-item"> Cras justo odio </a><?php } ?>
+				  	<?php $__FOR_START_804408221__=0;$__FOR_END_804408221__=9;for($i=$__FOR_START_804408221__;$i < $__FOR_END_804408221__;$i+=1){ ?><a href="#" class="list-group-item category-item"> Cras justo odio </a><?php } ?>
 					</div>
 				</div>
 			</div>
@@ -183,10 +185,10 @@
 			</ul>
 			<!-- Tab panes -->
 			<div class="tab-content" id="xxx-panels">
-			  <?php $__FOR_START_2018282607__=0;$__FOR_END_2018282607__=4;for($i=$__FOR_START_2018282607__;$i < $__FOR_END_2018282607__;$i+=1){ ?><div role="tabpanel" class="container tab-pane <?php echo ($i==0?'active':''); ?>" id="recommend-tab-<?php echo ($i); ?>">
+			  <?php $__FOR_START_1284454797__=0;$__FOR_END_1284454797__=4;for($i=$__FOR_START_1284454797__;$i < $__FOR_END_1284454797__;$i+=1){ ?><div role="tabpanel" class="container tab-pane <?php echo ($i==0?'active':''); ?>" id="recommend-tab-<?php echo ($i); ?>">
 			  	<div class="row">
-			  		<?php $__FOR_START_217734501__=0;$__FOR_END_217734501__=6;for($j=$__FOR_START_217734501__;$j < $__FOR_END_217734501__;$j+=1){ ?><div class="col-md-2 col-xs-4">
-						<a class="thumbnail">
+			  		<?php $__FOR_START_1554871710__=0;$__FOR_END_1554871710__=6;for($j=$__FOR_START_1554871710__;$j < $__FOR_END_1554871710__;$j+=1){ ?><div class="col-md-2 col-xs-4">
+						<a class="thumbnail" href="">
 							<img src="/Public/upload/goods/2014/12/20/123456.jpg" data-src="holder.js/300x300" alt="商品">
 							<div class="caption">
 								<h6>老鼠药<?php echo ($i*$j); ?></h6>
@@ -202,17 +204,18 @@
 	</section>
 	<!-- 列举产品 -->
 	<section class="container">
-		<?php $__FOR_START_568350894__=0;$__FOR_END_568350894__=3;for($i=$__FOR_START_568350894__;$i < $__FOR_END_568350894__;$i+=1){ ?><div class="row">
-			<?php $__FOR_START_61618093__=0;$__FOR_END_61618093__=3;for($ii=$__FOR_START_61618093__;$ii < $__FOR_END_61618093__;$ii+=1){ ?><div class="col-md-4">
+		<?php $__FOR_START_878359868__=0;$__FOR_END_878359868__=3;for($i=$__FOR_START_878359868__;$i < $__FOR_END_878359868__;$i+=1){ ?><div class="row">
+			<?php $__FOR_START_515113489__=0;$__FOR_END_515113489__=3;for($ii=$__FOR_START_515113489__;$ii < $__FOR_END_515113489__;$ii+=1){ ?><div class="col-md-4">
 				<div class="panel panel-default">
 				  <div class="panel-heading">
-				    <h3 class="panel-title">分类</h3>
+				    <a href=""><h3 class="panel-title">xxx类</h3></a>
 				  </div>
 				  <div class="panel-body">
-				  	<?php $__FOR_START_1156133156__=0;$__FOR_END_1156133156__=4;for($iii=$__FOR_START_1156133156__;$iii < $__FOR_END_1156133156__;$iii+=1){ ?><div class="col-md-6  col-xs-6">
+				  	<?php $__FOR_START_644555775__=0;$__FOR_END_644555775__=4;for($iii=$__FOR_START_644555775__;$iii < $__FOR_END_644555775__;$iii+=1){ ?><div class="col-md-6  col-xs-6">
 						    <a href="#" class="thumbnail">
 						      <img src="/Public/upload/goods/2014/12/20/123456.jpg" data-src="holder.js/100%x180" alt="...">
 						      <h5>老鼠药</h5>
+						      <strong class="color-danger">￥<?php echo ($j*$i*100); ?></strong>
 						    </a>
 						</div><?php } ?>
 				  </div>

@@ -2,13 +2,109 @@
 <block name="title">{$web_title}</block>
 <block name="css">
 	<css href="__PUBLIC__/css/common.css" />
-	<css href="__PUBLIC__/css/Index/signUp.css" />
+	<style type="text/css">
+		header {
+			margin: 25px 0;
+		}
+		.form {
+			margin-top: 10px;
+		}
+		#verify {
+			display: inline-block;
+			width: auto;
+		}
+	</style>
 </block>
 <block name="js">
 	<js href="__PUBLIC__/js/common.js" />
-	<js href="__PUBLIC__/js/Index/signUp.js" />
+	<script type="text/javascript">
+		$('#signUp-tablist a').click(function (e) {
+			  e.preventDefault()
+			  $(this).tab('show')
+		})	
+	</script>
 </block>
 <block name="body">
-
+  <div class="container">
+	<header class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<a href="{:U('Index/index')}"><img src="__PUBLIC__/img/logo.png" class="img-responsive" alt="{$web_name}"></a>
+		</div>
+		<div class="col-md-2"></div>
+	</header>
+	<section class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-6">
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs" role="tablist" id="signUp-tablist">
+			  <li role="presentation" class="active"><a href="#email-signup" role="tab" data-toggle="tab">使用邮箱注册</a></li>
+			  <li role="presentation"><a href="#phone-signup" role="tab" data-toggle="tab">使用手机号码注册</a></li>
+			</ul>
+			<!-- Tab panes -->
+			<div class="tab-content">
+			{// 用于格式化输入表格}
+			<php>
+			$tab_content = '
+			<form class="form" role="form" action="#" method="post">
+			  <div class="form-group">
+			    <label for="arg">%2$s</label>
+			    <input type="text" class="form-control" id="%1$s" name="%1$s" placeholder="请输入正确的%2$s">
+			    <button type="button" class="btn btn-default">发送验证%3$s</button>
+			    <input type="text" class="form-control" id="verify" placeholder="请填写验证码">
+			  </div>
+			  <div class="form-group">
+			    <label for="password">密码</label>
+			    <input type="password" class="form-control" id="%1$s_password" placeholder="密码长度为6-18位，不能含有空格">
+			    <input type="password" class="form-control" id="%1$s_repassword" placeholder="请确认密码">
+			  </div>
+			  <div class="checkbox">
+			    <label>
+			      <input type="checkbox" checked> 我同意<a href="#" data-toggle="modal" data-target="#clauseModal">条款</a>
+			    </label>
+			  </div>
+			  <button type="submit" class="btn btn-primary">注册</button>
+			</form>';
+			</php>
+			  <!-- 使用邮箱注册 -->
+			  <div role="tabpanel" class="tab-pane fade in active" id="email-signup">
+			  	{// 怀疑TP这里有个Bug, 用它的标签打印多出一个数字出来}
+			  	<php>printf($tab_content, 'email', '邮箱', '邮件')</php>
+			  </div>
+			  <!-- 使用手机号码注册 -->
+			  <div role="tabpanel" class="tab-pane fade" id="phone-signup">
+			  	<php>printf($tab_content, 'phone', '手机号码', '短信')</php>
+			  </div>
+			</div>
+		</div>
+		<!-- 条款Modal -->
+		<div class="modal fade" id="clauseModal" tabindex="-1" role="dialog" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+		      </div>
+		      <div class="modal-body">
+		        ...
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary">Save changes</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>			
+		<div class="col-md-4">
+			<br />
+			<h4>已有账号，到<a href="{:U('Index/index')}">首页</a>登陆</h4>
+			<br />
+	      	<h5>其他登陆方式</h5>
+	      	<a class="icon-link" href=""><img src="__PUBLIC__/img/weibo.png" alt="weibo"></a>
+	      	<a class="icon-link" href=""><img src="__PUBLIC__/img/qq.png" alt="qq"></a>
+	      	<a class="icon-link" href=""><img src="__PUBLIC__/img/weixin.png" alt="weixin"></a>			
+		</div>
+	</section>
+  </div>	
 	<include file="Public:footer" />
 </block>
