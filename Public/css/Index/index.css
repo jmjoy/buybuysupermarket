@@ -1,10 +1,7 @@
 @CHARSET "UTF-8";
 
-header {
-	margin-top: 60px;
-}
 
-#header-one, #header-two, section, footer {
+#category-panel, section, footer {
 	margin-bottom: 30px;
 }
 

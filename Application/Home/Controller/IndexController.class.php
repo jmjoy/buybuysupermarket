@@ -6,7 +6,6 @@ use Home\Controller\CommonController;
 class IndexController extends CommonController {
 	
     public function index(){
-    	$this->web_title = '买买网';
 		$this->display();
     }
 

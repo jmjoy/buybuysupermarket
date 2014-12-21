@@ -10,30 +10,9 @@
 </block>
 <block name="body">
 	<include file="Public:nav" />
+	<include file="Public:headerSearch" />
 	<header class="container">
-		<!-- 第一部分 -->
-		<div class="row" id="header-one">
-		  <!-- 首页LOGO -->
-		  <div class="col-md-3">
-		  	<a href="{:U('Index/index')}"><img src="__PUBLIC__/img/logo.png" class="img-responsive" alt="{$web_name}"></a>
-		  </div>
-		  <!-- 搜索 -->
-		  <div class="col-md-6" id="header-one-search">
-		  	<form action="###" method="get">
-			  	<div class="input-group">
-			      <input type="text" class="form-control">
-			      <span class="input-group-btn">
-			        <button class="btn btn-default" type="submit">
-			        	<span class="glyphicon glyphicon-search"></span>
-			        </button>
-			      </span>
-			    </div>	<!-- /input-group -->
-		    </form>
-		  </div>
-		  <div class="col-md-3"></div>
-		</div>
-		<!-- 第二部分 -->
-		<div class="row" id="header-two">
+		<div class="row" id="category-panel">
 			<!-- 全部分类 -->
 			<div class="col-md-3">
 				<div class="panel panel-default">
@@ -96,7 +75,7 @@
 							<img src="__PUBLIC__/upload/goods/2014/12/20/123456.jpg" data-src="holder.js/300x300" alt="商品">
 							<div class="caption">
 								<h6>老鼠药{$i*$j}</h6>
-								<strong class="color-danger">￥{$j*$i*100}</strong>
+								<strong class="text-danger">￥{$j*$i*100}</strong>
 								<small><del>￥{$i*$j*1000}</del></small>
 							</div>
 						</a>				  		
@@ -124,7 +103,7 @@
 						    <a href="#" class="thumbnail">
 						      <img src="__PUBLIC__/upload/goods/2014/12/20/123456.jpg" data-src="holder.js/100%x180" alt="...">
 						      <h5>老鼠药</h5>
-						      <strong class="color-danger">￥{$j*$i*100}</strong>
+						      <strong class="text-danger">￥{$j*$i*100}</strong>
 						    </a>
 						</div>
 					</for>

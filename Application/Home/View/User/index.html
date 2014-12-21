@@ -1,0 +1,42 @@
+<extend name="Public:base" />
+<block name="title">{$web_title}</block>
+<block name="css">
+	<css href="__PUBLIC__/css/common.css" />
+	<style type="text/css">
+		#avatar {
+			width: 60px;
+			height: 60px;
+		}
+	</style>
+</block>
+<block name="js">
+	<js href="__PUBLIC__/js/common.js" />
+	<script type="text/javascript">
+		var args = {
+			mod: "{$mod}",
+			url: "{:U('User/ajaxREPLACE')}"
+		};
+	</script>
+	<js href="__PUBLIC__/js/User/index.js" />
+</block>
+<block name="body">
+	<include file="Public:nav" />
+	<include file="Public:headerSearch" />
+	<section class="container">
+		<aside class="col-md-3">
+			<div class="list-group">
+			  <a href="#" class="list-group-item active">个人中心</a>
+			  <a href="#" class="list-group-item">个人信息</a>
+			  <a href="#" class="list-group-item"><span class="badge">4</span>购物车</a>
+			  <a href="#" class="list-group-item"><span class="badge">4</span>我的订单</a>
+			  <a href="#" class="list-group-item"><span class="badge">4</span>我的积分</a>
+			  <a href="#" class="list-group-item"><span class="badge">4</span>我的收藏</a>
+			  <a href="#" class="list-group-item"><span class="badge">4</span>我的评价</a>
+			</div>
+		</aside>
+		<article id="main" class="col-md-8">
+		</article>
+		<div class="col-md-1"></div>
+	</section>
+	<include file="Public:footer" />
+</block>

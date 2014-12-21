@@ -1,10 +1,5 @@
 @CHARSET "UTF-8";
 
-/* 颜色 */
-.color-danger {
-	color: #d9534f;
-}
-
 /* 导航栏高度 */
 .navbar-nav>li>a {
 	padding-top: 10px;
@@ -21,4 +16,14 @@
 	margin-top: 4px;
 	margin-bottom: 4px;
 }
+#navbar-space {
+	height: 60px;
+}
 
+/* 头部搜索栏 */
+#header-search {
+	margin-bottom: 30px;
+} 
+#header-search-search {
+	padding-top: 15px;
+}
