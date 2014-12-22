@@ -20,5 +20,5 @@ class IndexController extends CommonController {
      */
     public function keepLoginStatus() {
     }
-    
+
 }

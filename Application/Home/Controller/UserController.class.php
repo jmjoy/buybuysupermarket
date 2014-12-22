@@ -17,7 +17,7 @@ class UserController extends CommonController {
     	$this->display();
     }
     
-    public function ajaxDetail() {
+    public function ajaxAccount() {
     	$this->display();
     }
     

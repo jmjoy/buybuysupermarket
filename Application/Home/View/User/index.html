@@ -2,13 +2,18 @@
 <block name="title">{$web_title}</block>
 <block name="css">
 	<css href="__PUBLIC__/css/common.css" />
+	<css href="__PUBLIC__/bootstrap/css/bootstrap-datetimepicker.css" />
 	<style type="text/css">
 		#avatar {
 			width: 60px;
 			height: 60px;
 		}
-		#order-well {
-			margin-top: 10px;
+		#avatar-big {
+			width: 150px;
+			height: 150px;
+		}
+		.nav-tabs {
+			margin-bottom: 15px;
 		}
 		.good-pic {
 			width: 85px;
@@ -25,6 +30,7 @@
 </block>
 <block name="js">
 	<js href="__PUBLIC__/js/common.js" />
+	<js href="__PUBLIC__/bootstrap/js/bootstrap-datetimepicker.js" />
 	<script type="text/javascript">
 		var args = {
 			mod: "{$mod}",
@@ -40,7 +46,7 @@
 		<aside class="col-md-3">
 			<div class="list-group">
 			  <a href="{:U('User/index', 'mod=Center')}" class="list-group-item active">个人中心</a>
-			  <a href="{:U('User/index', 'mod=Detail')}" class="list-group-item">个人信息</a>
+			  <a href="{:U('User/index', 'mod=Account')}" class="list-group-item">账号管理</a>
 			  <a href="{:U('User/index', 'mod=Cart')}" class="list-group-item"><span class="badge">4</span>购物车</a>
 			  <a href="{:U('User/index', 'mod=Order&type=all')}" class="list-group-item"><span class="badge">4</span>我的订单</a>
 			  <a href="{:U('User/index', 'mod=Credit')}" class="list-group-item"><span class="badge">4</span>我的积分</a>

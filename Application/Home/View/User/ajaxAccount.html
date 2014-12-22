@@ -1,0 +1,159 @@
+<div class="row">
+	<div class="col-md-10">
+		<!-- 标签页 -->
+		<!-- Nav tabs -->
+		<ul class="nav nav-tabs" role="tablist">
+		  <li role="presentation" class="active"><a href="#baseinfo" role="tab" data-toggle="tab">个人资料</a></li>
+		  <li role="presentation"><a href="#security" role="tab" data-toggle="tab">安全设置</a></li>
+		  <li role="presentation"><a href="#individuation" role="tab" data-toggle="tab">个性设置</a></li>
+		  <li role="presentation"><a href="#deliverAddress" role="tab" data-toggle="tab">收货地址</a></li>
+		  <li role="presentation"><a href="#paySet" role="tab" data-toggle="tab">支付设置</a></li>
+		</ul>
+		<!-- Tab panes -->
+		<div class="tab-content">
+		  <!-- 个人资料 -->
+		  <div role="tabpanel" class="tab-pane fade in active" id="baseinfo">
+			<form class="form-horizontal" role="form">
+			  <div class="form-group">
+			    <label class="col-sm-2 control-label">头像：</label>
+			    <div class="col-sm-3">
+					<a href="#" class="thumbnail">
+					  <img src="__PUBLIC__/img/default_avatar.jpg" data-src="holder.js/100%x180" alt="avatar">
+					</a>
+			    </div>			    
+			  </div>
+			  <div class="form-group">
+			    <label for="nickname" class="col-sm-2 control-label">昵称：</label>
+			    <div class="col-sm-4">
+			      <input type="text" class="form-control" id="nickname" />
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label class="col-sm-2 control-label">性别：</label>
+			    <div class="col-sm-4">
+					<label class="radio-inline">
+					  <input type="radio" name="sex" value="0" checked> 保密
+					</label>
+					<label class="radio-inline">
+					  <input type="radio" name="sex" value="1"> 男
+					</label>
+					<label class="radio-inline">
+					  <input type="radio" name="sex" value="2"> 女
+					</label>			    	
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label for="dtp_input" class="col-sm-2 control-label">生日：</label>
+				<div class="input-group date form_date col-md-5" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input" data-link-format="yyyy-mm-dd">
+				    <input id="birthday" class="form-control" type="text" readonly>
+				    <span id="birth-remove" class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+				</div>
+				<input type="hidden" id="dtp_input" />
+			  </div>
+			  <div class="form-group">
+			    <label for="address" class="col-sm-2 control-label">住址：</label>
+			    <div class="col-sm-6">
+			    	<div class="row">
+			    		<div class="col-sm-4">
+							<select class="form-control ">
+								<option value="0">北京</option>
+								<option value="0">北京</option>
+								<option value="0">北京</option>
+							</select>
+						</div>
+			    		<div class="col-sm-4">
+							<select class="form-control ">
+								<option value="0">北京</option>
+								<option value="0">北京</option>
+								<option value="0">北京</option>
+							</select>
+						</div>
+			    		<div class="col-sm-4">
+							<select class="form-control ">
+								<option value="0">北京</option>
+								<option value="0">北京</option>
+								<option value="0">北京</option>
+							</select>
+						</div>
+					</div>
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <div class="col-sm-offset-2 col-sm-10">
+			      <button type="submit" class="btn btn-default">保存修改</button>
+			    </div>
+			  </div>
+			</form>			
+		  </div>
+		  <!-- 安全设置 -->
+		  <div role="tabpanel" class="tab-pane fade" id="security">
+			<div class="list-group col-xs-4">
+			  <a href="javascript:void(0)" class="list-group-item" onclick="showModify(0)">
+			  	<h4 class="text-left">邮箱地址</h4>
+			  	<p class="text-center">9187***@qq.com</p>
+			  </a>
+			</div>		  	
+			<div class="list-group col-xs-4">
+			  <a href="javascript:void(0)" class="list-group-item" onclick="showModify(1)">
+			  	<h4 class="text-left">手机号码</h4>
+			  	<p class="text-center">188×××××700</p>
+			  </a>
+			</div>
+			<div class="list-group col-xs-4">
+			  <a href="javascript:void(0)" class="list-group-item" onclick="showModify(2)">
+			  	<h4 class="text-left">修改密码</h4>
+			  	<p class="text-center">？？？？？？</p>
+			  </a>
+			</div>
+			{// 用于格式化输入表格}
+			<php>
+				$tab_content = '
+			    	<input type="text" class="form-control" id="%1$s" name="%1$s" placeholder="请输入正确的%2$s">
+	    			<button type="button" class="btn btn-default">发送验证%2$s</button>
+	    			<input type="text" class="form-control" id="verify" placeholder="请填写验证码">
+					<button type="button" class="btn btn-default">修改</button>
+				';
+			</php>			
+			<div class="modify-inputs col-md-offset-2 col-md-8 hidden">
+				<!-- 使用邮箱注册 -->
+				{:sprintf($tab_content, 'email', '邮件')}
+
+			</div>
+			<div class="modify-inputs col-md-offset-2 col-md-8 hidden">
+				<!-- 使用手机号码注册 -->
+				{:sprintf($tab_content, 'phone', '短信')}
+			</div>
+			<div class="modify-inputs col-md-offset-2 col-md-8 hidden">
+			    <input type="password" class="form-control" id="%1$s_password" placeholder="密码长度为6-18位，不能含有空格">
+			    <input type="password" class="form-control" id="%1$s_repassword" placeholder="请确认密码">
+				<button type="button" class="btn btn-default">修改</button>
+			</div>
+		  </div>
+		  <div role="tabpanel" class="tab-pane fade" id="individuation">...</div>
+		  <div role="tabpanel" class="tab-pane fade" id="deliverAddress">...</div>
+		  <div role="tabpanel" class="tab-pane fade" id="paySet">...</div>
+		</div>
+	</div>
+	<div class="col-md-2"></div>
+</div>
+
+<script type="text/javascript">
+$('.form_date').datetimepicker({
+    weekStart: 1,
+    todayBtn:  1,
+	autoclose: 1,
+	todayHighlight: 1,
+	startView: 2,
+	minView: 2,
+	forceParse: 0
+});
+$("#birth-remove").click(function() {
+	$("#birthday").val("");
+});
+
+function showModify(index) {
+	$(".modify-inputs").addClass("hidden");
+	$($(".modify-inputs").get(index)).removeClass("hidden");
+}
+</script>
