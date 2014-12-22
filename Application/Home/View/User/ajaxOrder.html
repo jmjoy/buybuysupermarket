@@ -1,0 +1,80 @@
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#">全部订单</a></li>
+  <li role="presentation"><a href="#">待付款 <span class="text-danger">0</span> </a></li>
+  <li role="presentation"><a href="#">待收货 <span class="text-danger">10</span> </a></li>
+  <li role="presentation"><a href="#">待评论 <span class="text-danger">200</span> </a></li>
+</ul>
+<!-- 订单列表头部 -->
+<div id="order-well" class="well well-sm bg-info">
+	<div class="row">
+		<div class="col-xs-4 text-center">商品</div>
+		<div class="col-xs-2 text-center">单价（元）</div>
+		<div class="col-xs-2 text-center">数量</div>
+		<div class="col-xs-2 text-center">总价</div>
+		<div class="col-xs-2 text-center">操作</div>
+	</div>
+</div>
+<!-- 订单列表 -->
+<for start="0" end="10" name="i">
+<div class="panel panel-default">
+  <!-- 订单时间和订单号 -->
+  <div class="panel-heading">
+  	<input type="checkbox" disabled />&nbsp;&nbsp;
+  	<strong>2014-11-25</strong>&nbsp;&nbsp;
+  	<small>订单号： 1234567890</small>&nbsp;&nbsp;
+  	<small>交易成功</small>
+  </div>
+  <!-- 订单内容 -->
+  <div class="panel-body">
+	<div class="row">
+		<div class="col-md-4">
+			<div class="media">
+			  <a class="media-left" href="#">
+			    <img class="img-rounded good-pic" src="__PUBLIC__/upload/goods/2014/12/22/123456.jpg" alt="good">
+			  </a>
+			  <div class="media-body">
+			    <p class="media-heading">戴尔电脑</p>
+			    <small class="text-muted">款式：最新</small>
+			  </div>
+			</div>
+		</div>
+		<div class="col-md-2 col-xs-4 text-center">￥9000.00</div>
+		<div class="col-md-2 col-xs-4 text-center">1</div>
+		<div class="col-md-2 col-xs-4 text-center">
+			<strong>￥9100</strong><br /><small>（含运费￥100）</small>
+		</div>
+		<div class="col-md-2 text-center">
+			<switch name="i%4">
+				<case value="0"><button type="button" class="btn btn-warning">去付款</button></case>
+				<case value="1"><button type="button" class="btn btn-danger">确认收货</button></case>
+				<case value="2"><button type="button" class="btn btn-primary">去评论</button></case>
+				<case value="3"><button type="button" class="btn btn-info">追加评论</button></case>
+			</switch>
+		</div>
+	</div>
+  </div>
+</div>
+</for>
+<!-- 分页栏 -->
+<nav class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-6 text-right">
+		<ul class="pagination pagination-sm">
+			<li class="disabled"><a href="javascript:void(0)">&laquo;</a></li>
+		    <li class="active"><a href="javascript:void(0)">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">5</a></li>
+			<li><a href="#">&raquo;</a></li>
+		</ul>
+	</div>
+	<div class="col-md-4 text-right">
+		<form class="form-inline" role="form">
+		  <small>共 100 页，到</small>
+		  <input id="jump-input" class="form-control input-sm" value="1" />
+		  <small>页</small>
+		  <button type="submit" class="btn btn-default btn-xs">确定</button>
+		</form>
+	</div>
+</nav>

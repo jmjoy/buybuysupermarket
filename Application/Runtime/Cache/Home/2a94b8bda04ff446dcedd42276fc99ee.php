@@ -140,7 +140,7 @@
 				<div class="panel panel-default">
 				  <div class="panel-heading"><a href="#">全部分类</a></div>
 				  <div class="list-group">
-				  	<?php $__FOR_START_1423852883__=0;$__FOR_END_1423852883__=9;for($i=$__FOR_START_1423852883__;$i < $__FOR_END_1423852883__;$i+=1){ ?><a href="#" class="list-group-item category-item"> Cras justo odio </a><?php } ?>
+				  	<?php $__FOR_START_1310225608__=0;$__FOR_END_1310225608__=9;for($i=$__FOR_START_1310225608__;$i < $__FOR_END_1310225608__;$i+=1){ ?><a href="#" class="list-group-item category-item"> Cras justo odio </a><?php } ?>
 					</div>
 				</div>
 			</div>
@@ -186,9 +186,9 @@
 			</ul>
 			<!-- Tab panes -->
 			<div class="tab-content" id="xxx-panels">
-			  <?php $__FOR_START_1611378026__=0;$__FOR_END_1611378026__=4;for($i=$__FOR_START_1611378026__;$i < $__FOR_END_1611378026__;$i+=1){ ?><div role="tabpanel" class="container tab-pane <?php echo ($i==0?'active':''); ?>" id="recommend-tab-<?php echo ($i); ?>">
+			  <?php $__FOR_START_1895906789__=0;$__FOR_END_1895906789__=4;for($i=$__FOR_START_1895906789__;$i < $__FOR_END_1895906789__;$i+=1){ ?><div role="tabpanel" class="container tab-pane <?php echo ($i==0?'active':''); ?>" id="recommend-tab-<?php echo ($i); ?>">
 			  	<div class="row">
-			  		<?php $__FOR_START_941263868__=0;$__FOR_END_941263868__=6;for($j=$__FOR_START_941263868__;$j < $__FOR_END_941263868__;$j+=1){ ?><div class="col-md-2 col-xs-4">
+			  		<?php $__FOR_START_1697424633__=0;$__FOR_END_1697424633__=6;for($j=$__FOR_START_1697424633__;$j < $__FOR_END_1697424633__;$j+=1){ ?><div class="col-md-2 col-xs-4">
 						<a class="thumbnail" href="">
 							<img src="/Public/upload/goods/2014/12/20/123456.jpg" data-src="holder.js/300x300" alt="商品">
 							<div class="caption">
@@ -205,14 +205,14 @@
 	</section>
 	<!-- 列举产品 -->
 	<section class="container">
-		<?php $__FOR_START_710067572__=0;$__FOR_END_710067572__=3;for($i=$__FOR_START_710067572__;$i < $__FOR_END_710067572__;$i+=1){ ?><div class="row">
-			<?php $__FOR_START_1904941036__=0;$__FOR_END_1904941036__=3;for($ii=$__FOR_START_1904941036__;$ii < $__FOR_END_1904941036__;$ii+=1){ ?><div class="col-md-4">
+		<?php $__FOR_START_1662492609__=0;$__FOR_END_1662492609__=3;for($i=$__FOR_START_1662492609__;$i < $__FOR_END_1662492609__;$i+=1){ ?><div class="row">
+			<?php $__FOR_START_1010343499__=0;$__FOR_END_1010343499__=3;for($ii=$__FOR_START_1010343499__;$ii < $__FOR_END_1010343499__;$ii+=1){ ?><div class="col-md-4">
 				<div class="panel panel-default">
 				  <div class="panel-heading">
 				    <a href=""><h3 class="panel-title">xxx类</h3></a>
 				  </div>
 				  <div class="panel-body">
-				  	<?php $__FOR_START_1161128548__=0;$__FOR_END_1161128548__=4;for($iii=$__FOR_START_1161128548__;$iii < $__FOR_END_1161128548__;$iii+=1){ ?><div class="col-md-6  col-xs-6">
+				  	<?php $__FOR_START_1136152126__=0;$__FOR_END_1136152126__=4;for($iii=$__FOR_START_1136152126__;$iii < $__FOR_END_1136152126__;$iii+=1){ ?><div class="col-md-6  col-xs-6">
 						    <a href="#" class="thumbnail">
 						      <img src="/Public/upload/goods/2014/12/20/123456.jpg" data-src="holder.js/100%x180" alt="...">
 						      <h5>老鼠药</h5>

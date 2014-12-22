@@ -7,6 +7,20 @@
 			width: 60px;
 			height: 60px;
 		}
+		#order-well {
+			margin-top: 10px;
+		}
+		.good-pic {
+			width: 85px;
+			height: 85px;
+		}
+		#jump-input {
+			width: 45px;
+			height: 22px;
+		}
+		.pagination {
+			margin: 0;
+		}
 	</style>
 </block>
 <block name="js">
@@ -25,18 +39,17 @@
 	<section class="container">
 		<aside class="col-md-3">
 			<div class="list-group">
-			  <a href="#" class="list-group-item active">个人中心</a>
-			  <a href="#" class="list-group-item">个人信息</a>
-			  <a href="#" class="list-group-item"><span class="badge">4</span>购物车</a>
-			  <a href="#" class="list-group-item"><span class="badge">4</span>我的订单</a>
-			  <a href="#" class="list-group-item"><span class="badge">4</span>我的积分</a>
-			  <a href="#" class="list-group-item"><span class="badge">4</span>我的收藏</a>
-			  <a href="#" class="list-group-item"><span class="badge">4</span>我的评价</a>
+			  <a href="{:U('User/index', 'mod=Center')}" class="list-group-item active">个人中心</a>
+			  <a href="{:U('User/index', 'mod=Detail')}" class="list-group-item">个人信息</a>
+			  <a href="{:U('User/index', 'mod=Cart')}" class="list-group-item"><span class="badge">4</span>购物车</a>
+			  <a href="{:U('User/index', 'mod=Order&type=all')}" class="list-group-item"><span class="badge">4</span>我的订单</a>
+			  <a href="{:U('User/index', 'mod=Credit')}" class="list-group-item"><span class="badge">4</span>我的积分</a>
+			  <a href="{:U('User/index', 'mod=Star')}" class="list-group-item"><span class="badge">4</span>我的收藏</a>
+			  <a href="{:U('User/index', 'mod=Comment')}" class="list-group-item"><span class="badge">4</span>我的评价</a>
 			</div>
 		</aside>
-		<article id="main" class="col-md-8">
+		<article id="main" class="col-md-9">
 		</article>
-		<div class="col-md-1"></div>
 	</section>
 	<include file="Public:footer" />
 </block>
