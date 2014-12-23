@@ -25,4 +25,12 @@ class UserController extends CommonController {
     	$this->display();
     }
     
+    public function ajaxCart() {
+    	$this->display();
+    }
+	
+    public function ajaxPoint() {
+    	$this->display();
+    }
+    
 }
