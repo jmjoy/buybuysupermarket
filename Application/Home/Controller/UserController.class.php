@@ -33,4 +33,12 @@ class UserController extends CommonController {
     	$this->display();
     }
     
+    public function ajaxStar() {
+    	$this->display();
+    }
+    
+    public function ajaxComment() {
+    	$this->display();
+    }
+    
 }

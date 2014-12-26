@@ -13,6 +13,10 @@ class IndexController extends CommonController {
     	$this->display();
     }
     
+    public function category() {
+    	$this->display();
+    }
+    
     /**
      * 保持登陆状态,
      * 前端定时使用ajax请求,
