@@ -10,4 +10,7 @@ class CommonController extends Controller {
 		$this->web_title = '买买网，快来买啊！';
 	}
 	
+	public function test() {
+		sys_get_temp_dir();
+	}
 }
