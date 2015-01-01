@@ -1,0 +1,43 @@
+<extend name="Public:base" />
+<block name="css">
+	<style type="text/css">
+		#avatar {
+			width: 60px;
+			height: 60px;
+		}
+		#avatar-big {
+			width: 150px;
+			height: 150px;
+		}
+		.nav-tabs {
+			margin-bottom: 15px;
+		}
+		.good-pic {
+			width: 85px;
+			height: 85px;
+		}
+		#jump-input {
+			width: 45px;
+			height: 22px;
+		}
+		.pagination {
+			margin: 0;
+		}
+		#qty-input {
+			width: 80px;
+		}
+	</style>
+</block>
+<block name="js">
+</block>
+<block name="body">
+	<include file="Public:nav" />
+	<include file="Public:headerSearch" />
+	<section class="container">
+		<include file="leftNav" />
+		<article id="main" class="col-md-9">
+			...
+		</article>
+	</section>
+	<include file="Public:footer" />
+</block>

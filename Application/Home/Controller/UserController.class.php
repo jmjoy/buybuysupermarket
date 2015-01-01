@@ -5,39 +5,31 @@ use Home\Controller\CommonController;
 
 class UserController extends CommonController {
 	
-    public function index($mod = 'Center'){
-    	if (!method_exists($this, 'ajax' . $mod)) {
-    		return;
-    	}
-    	$this->mod = $mod;
+    public function index() {
     	$this->display();
     }
     
-    public function ajaxCenter() {
+    public function account() {
     	$this->display();
     }
     
-    public function ajaxAccount() {
+    public function order() {
     	$this->display();
     }
     
-    public function ajaxOrder() {
-    	$this->display();
-    }
-    
-    public function ajaxCart() {
+    public function cart() {
     	$this->display();
     }
 	
-    public function ajaxPoint() {
+    public function point() {
     	$this->display();
     }
     
-    public function ajaxStar() {
+    public function star() {
     	$this->display();
     }
     
-    public function ajaxComment() {
+    public function comment() {
     	$this->display();
     }
     
