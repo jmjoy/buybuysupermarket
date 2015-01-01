@@ -7,6 +7,42 @@
 <block name="body">
 	<include file="Public:nav" />
 	<include file="Public:headerSearch" />
-
+	<section class="container">
+		<div class="col-md-10 col-md-offset-1">
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs" role="tablist">
+			  <li role="presentation" class="active"><a href="#all" role="tab" data-toggle="tab">全部分类</a></li>
+			</ul>
+			<!-- Tab panes -->
+			<div class="tab-content">
+			  <div role="tabpanel" class="tab-pane active" id="all">
+				<hr />
+				<div class="row">
+				<for start="0" end="9">
+					<div class="col-md-1 col-xs-2">
+						<button type="button" class="btn btn-default btn-sm">某分类</button>
+					</div>
+				</for>
+				</div>
+				<hr />
+				<div class="row">
+				<for start="0" end="9">
+					<div class="col-md-1 col-xs-2">
+						<button type="button" class="btn btn-default btn-sm">某分类</button>
+					</div>
+				</for>
+				</div>
+				<hr />
+				<div class="row">
+				<for start="0" end="9">
+					<div class="col-md-1 col-xs-2">
+						<button type="button" class="btn btn-default btn-sm">某分类</button>
+					</div>
+				</for>
+				</div>
+			  </div>	<!-- /tabpanel -->
+			</div>	<!-- /tab-content -->
+		</div>
+	</section>
 	<include file="Public:footer" />
 </block>

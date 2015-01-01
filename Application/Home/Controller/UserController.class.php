@@ -1,9 +1,9 @@
 <?php
 
 namespace Home\Controller;
-use Home\Controller\CommonController;
+use Home\Controller\AuthController;
 
-class UserController extends CommonController {
+class UserController extends AuthController {
 	
     public function index() {
     	$this->display();
