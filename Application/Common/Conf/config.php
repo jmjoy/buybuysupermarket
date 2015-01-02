@@ -13,7 +13,6 @@ return array(
 	'URL_CASE_INSENSITIVE'  =>  true,
 		
 	/* 网站配置 */
-	‘WEB_NAME’			=>	'买买网',
-	‘WEB_TITLE’			=>	'买买网 - 快点买啊！',
-	
+	'WEB_NAME'			=>	'买买网'
+		
 );

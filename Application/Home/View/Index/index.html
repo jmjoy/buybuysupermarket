@@ -1,5 +1,4 @@
 <extend name="Public:base" />
-<block name="title">{$web_title}</block>
 <block name="css">
 	<css href="__PUBLIC__/css/Index/index.css" />
 </block>
@@ -69,7 +68,7 @@
 			  	<div class="row">
 			  		<for start="0" end="6" name="j">
 				  	<div class="col-md-2 col-xs-4">
-						<a class="thumbnail" href="">
+						<a class="thumbnail" href="{:U('Index/item')}">
 							<img src="__PUBLIC__/upload/goods/2014/12/20/123456.jpg" data-src="holder.js/300x300" alt="商品">
 							<div class="caption">
 								<h6>老鼠药{$i*$j}</h6>
