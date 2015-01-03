@@ -3,7 +3,7 @@
 namespace Admin\Controller;
 use Admin\Controller\AuthController;
 
-class IndexController extends CommonController {
+class AdminController extends AuthController {
 
 	public function index() {
 		$this->display();
