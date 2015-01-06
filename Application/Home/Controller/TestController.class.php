@@ -1,15 +1,13 @@
 <?php
 
 namespace Home\Controller;
-use Home\Controller\CommonController;
+use Common\Controller\CommonController;
 
 class TestController extends CommonController {
 	
 	//TODO 这里很难的
     public function index(){
-		if (!isset($hello)) {
-			echo "hello";
-		}		
+		var_dump(I('post.fuck'));
     }
     
 }

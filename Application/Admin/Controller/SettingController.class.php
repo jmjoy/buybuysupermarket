@@ -1,10 +1,14 @@
 <?php 
 
 namespace Admin\Controller;
-use Admin\Controller\AuthController;
+use Common\Controller\AuthController;
 
 class SettingController extends AuthController {
 
+	public function index() {
+		
+	}
+	
 	public function listAdmin() {
 		$this->display();
 	}

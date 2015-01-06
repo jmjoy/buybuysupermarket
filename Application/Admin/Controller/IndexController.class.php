@@ -1,7 +1,7 @@
 <?php 
 
 namespace Admin\Controller;
-use Admin\Controller\AuthController;
+use Common\Controller\CommonController;
 
 class IndexController extends CommonController {
 

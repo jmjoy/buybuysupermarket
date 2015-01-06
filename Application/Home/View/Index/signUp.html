@@ -7,7 +7,7 @@
 		.form {
 			margin-top: 10px;
 		}
-		#verify {
+		#email_verify, #phone_verify {
 			display: inline-block;
 			width: auto;
 		}
@@ -18,7 +18,70 @@
 		$('#signUp-tablist a').click(function (e) {
 			  e.preventDefault()
 			  $(this).tab('show')
-		})	
+		})
+		
+		var status = {};
+		
+		function inputBlur(node) {
+			var $node = $(node);
+			var id = $node.attr("id");
+			var $parent = $node.parent("div");
+			var $err = $("#" + id + "_err");
+			var $icon = $("#" + id + "_icon");
+			// 检验开始。。。
+			$parent.attr("class", "form-group has-warning has-feedback");
+			$err.html("");
+			$icon.attr("class", "glyphicon glyphicon-warning-sign form-control-feedback");
+			// 检验中。。。
+			var args = {
+					arg:	$node.val(),
+					type:	$node.attr("name")
+			};
+			$.post("{:U('Sign/ajaxValidate')}", args, function(data) {
+				// 检验失败
+				if (!data.status) {
+					$parent.attr("class", "form-group has-error has-feedback");
+					$err.html(data.msg);
+					$icon.attr("class", "glyphicon glyphicon-remove form-control-feedback");
+				// 校验成功
+				} else {
+					$parent.attr("class", "form-group has-success has-feedback");
+					$err.html("");
+					$icon.attr("class", "glyphicon glyphicon-ok form-control-feedback");
+				}
+			}, 'json');
+		}
+		
+		function checkRepasswd(node) {
+			var $node = $(node);
+			var prefix = $node.attr("data-prefix");
+			var passwd = $("#" + prefix + "password").val();
+			var repasswd = $node.val();
+			
+			var id = $node.attr("id");
+			var $parent = $node.parent("div");
+			var $err = $("#" + id + "_err");
+			var $icon = $("#" + id + "_icon");
+			// 检验失败
+			if (passwd != repasswd) {
+				$parent.attr("class", "form-group has-error has-feedback");
+				$err.html("两次密码不一致");
+				$icon.attr("class", "glyphicon glyphicon-remove form-control-feedback");
+			// 校验成功
+			} else {
+				$parent.attr("class", "form-group has-success has-feedback");
+				$err.html("");
+				$icon.attr("class", "glyphicon glyphicon-ok form-control-feedback");
+			}
+		}
+		
+		function inputFocus(node) {
+			var $node = $(node);
+			$node.parent("div").attr("class", "form-group has-feedback");
+			var id = $node.attr("id");
+			$("#" + id + "_err").html("");
+			$("#" + id + "_icon").attr("class", "");
+		}
 	</script>
 </block>
 <block name="body">
@@ -43,33 +106,48 @@
 			{// 用于格式化输入表格}
 			<php>
 			$tab_content = '
-			<form class="form" role="form" action="#" method="post">
-			  <div class="form-group">
+			  <div class="form-group has-feedback">
 			    <label for="arg">%2$s</label>
-			    <input type="text" class="form-control" id="%1$s" name="%1$s" placeholder="请输入正确的%2$s">
+			    <input type="text" class="form-control" id="%1$s" name="%1$s" placeholder="请输入正确的%2$s" onblur="inputBlur(this)" onfocus="inputFocus(this)">
+			    <span id="%1$s_icon"></span>
+			    <p id="%1$s_err" class="text-danger"></p>
+			  </div>
+			  <div class="form-group">
 			    <button type="button" class="btn btn-default">发送验证%3$s</button>
-			    <input type="text" class="form-control" id="verify" placeholder="请填写验证码">
+			    <input type="text" class="form-control" id="%1$s_verify" name="%1$s_verify" placeholder="请填写验证码" onblur="inputBlur(this)" onfocus="inputFocus(this)">
+			    <span id="%1$s_verify_icon"></span>
+			    <span id="%1$s_verify_err" class="text-danger"></span>
 			  </div>
 			  <div class="form-group">
 			    <label for="password">密码</label>
-			    <input type="password" class="form-control" id="%1$s_password" placeholder="密码长度为6-18位，不能含有空格">
-			    <input type="password" class="form-control" id="%1$s_repassword" placeholder="请确认密码">
+			    <input type="password" class="form-control" name="password" id="%1$s_password" placeholder="密码长度为6-18位，不能含有空格" onblur="inputBlur(this)" onfocus="inputFocus(this)">
+			    <span id="%1$s_password_icon"></span>
+			    <p id="%1$s_password_err" class="text-danger"></p>
+			  </div> 
+			  <div class="form-group">
+			    <input type="password" class="form-control" name="repassword" id="%1$s_repassword" data-prefix="%1$s_" placeholder="请确认密码" onblur="checkRepasswd(this)" onfocus="inputFocus(this)">
+			    <span id="%1$s_repassword_icon"></span>
+			    <p id="%1$s_repassword_err" class="text-danger"></p>
 			  </div>
 			  <div class="checkbox">
 			    <label>
 			      <input type="checkbox" checked> 我同意<a href="#" data-toggle="modal" data-target="#clauseModal">条款</a>
 			    </label>
 			  </div>
-			  <button type="submit" class="btn btn-primary">注册</button>
-			</form>';
+			  <button type="submit" id="%1$s_submit_btn" class="btn btn-primary">注册</button>
+			';
 			</php>
 			  <!-- 使用邮箱注册 -->
 			  <div role="tabpanel" class="tab-pane fade in active" id="email-signup">
-			  	{:sprintf($tab_content, 'email', '邮箱', '邮件')}
+			  	<form class="form" role="form" action="{:U('Sign/handleSignUp', 'mode=email')}" method="post">
+			  		{:sprintf($tab_content, 'email', '邮箱', '邮件')}
+			  	</form>
 			  </div>
 			  <!-- 使用手机号码注册 -->
 			  <div role="tabpanel" class="tab-pane fade" id="phone-signup">
-			  	{:sprintf($tab_content, 'phone', '手机号码', '短信')}
+			  	<form class="form" role="form" action="{:U('Sign/handleSignUp', 'mode=phone')}" method="post">
+			  		{:sprintf($tab_content, 'phone', '手机号码', '短信')}
+			  	</form>
 			  </div>
 			</div>
 		</div>

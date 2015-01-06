@@ -1,11 +1,22 @@
 <?php
 
 /**
- * 格式化打印变量
- * @param mixed $arg 要打印的变量
+ * 格式化打印变量，接收可变参数
  */
-function p($arg) {
+function p() {
 	echo "<pre>\n";
-	var_dump($arg);
+	foreach (func_get_args() as $arg) {
+		var_dump($arg);
+	}
 	echo "</pre>\n";
+	die();
+}
+
+/**
+ * 加密密码
+ * @param string $passwd
+ * @return string
+ */
+function encrypt_passwd($passwd) {
+	return md5(sha1($passwd) . C('CRYPT_SALT'));
 }

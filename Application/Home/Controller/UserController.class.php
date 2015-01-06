@@ -1,7 +1,7 @@
 <?php
 
 namespace Home\Controller;
-use Home\Controller\AuthController;
+use Common\Controller\AuthController;
 
 class UserController extends AuthController {
 	

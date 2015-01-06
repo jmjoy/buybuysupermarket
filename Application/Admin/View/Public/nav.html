@@ -8,6 +8,12 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">用户<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="{:U('Setting/listAdmin')}">管理员管理</a></li>
+          </ul>
+        </li>	<!-- /dropdown -->
+        <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">设置<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="{:U('Setting/listAdmin')}">管理员管理</a></li>
@@ -16,7 +22,7 @@
             <li class="divider"></li>
             <li><a href="{:U('Setting/info')}">phpinfo</a></li>
           </ul>
-        </li>
+        </li>	<!-- /dropdown -->
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">[root]</a></li>
