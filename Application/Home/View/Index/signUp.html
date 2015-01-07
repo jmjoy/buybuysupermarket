@@ -20,7 +20,17 @@
 			  $(this).tab('show')
 		})
 		
-		var status = {};
+		var status = {
+				email:	false,
+				phone:	false,
+				email_verify:	false,
+				phone_verify:	false,
+				email_password:	false,
+				phone_password:	false,
+				email_repassword:	false,
+				phone_repassword:	false,
+				
+		};
 		
 		function inputBlur(node) {
 			var $node = $(node);

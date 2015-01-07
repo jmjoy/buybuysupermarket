@@ -25,10 +25,10 @@ class SignController extends CommonController {
 	}
 	
 	public function ajaxValidate() {
-		$map = array(
-				'email'		=>	'ajaxValidateEmail',
+		$funcMap = array(
+				'email'		=>	'validateEmail',
 		);
-		if (!isset($map[I('type')])) {
+		if (!isset($funcMap[I('post.type')])) {
 			$this->ajaxReturn(
 					array(
 							"status"	=>	false,
@@ -36,11 +36,7 @@ class SignController extends CommonController {
 					)
 			);
 		}
-		$this->$map[I('type')](I('post.arg'));
-	}
-	
-	private function ajaxValidateEmail($arg) {
-		$result = $this->userModel->validateEmail($arg);
+		$result = $this->userModel->$funcMap[I('post.type')](I('post.arg'));
 		// 校验失败
 		if ($result !== true) {
 			$this->ajaxReturn(
@@ -56,6 +52,24 @@ class SignController extends CommonController {
 						"status"	=>	true,
 				)
 		);
+	}
+	
+	/**
+	 * ajax检测某一字段
+	 */
+	public function ajaxValidateField() {
+		$result = $this->shopkeeperModel->validateField(I('type'));
+		// 验证失败
+		if ($result !== true) {
+			$this->ajaxReturn(array(
+					'status'	=>	false,
+					'msg'		=>	$result,
+			));
+		}
+		// 验证OK
+		$this->ajaxReturn(array(
+				'status'	=>	true,
+		));
 	}
 	
 }
