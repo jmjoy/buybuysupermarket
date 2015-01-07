@@ -20,6 +20,11 @@
 			  $(this).tab('show')
 		})
 		
+		function showSetp2(mode) {
+			$("#setp1_panel").addClass("hidden");
+			$("#setp2_panel").removeClass("hidden");
+		}
+		
 		var status = {
 				email:	false,
 				phone:	false,
@@ -103,62 +108,37 @@
 		<div class="col-md-6"></div>
 	</header>
 	<section class="row">
-		<div class="col-md-2"></div>
-		<div class="col-md-6">
-			<!-- Nav tabs -->
-			<ul class="nav nav-tabs" role="tablist" id="signUp-tablist">
-			  <li role="presentation" class="active"><a href="#email-signup" role="tab" data-toggle="tab">使用邮箱注册</a></li>
-			  <li role="presentation"><a href="#phone-signup" role="tab" data-toggle="tab">使用手机号码注册</a></li>
-			</ul>
-			<!-- Tab panes -->
-			<div class="tab-content">
-			{// 用于格式化输入表格}
-			<php>
-			$tab_content = '
-			  <div class="form-group has-feedback">
-			    <label for="arg">%2$s</label>
-			    <input type="text" class="form-control" id="%1$s" name="%1$s" placeholder="请输入正确的%2$s" onblur="inputBlur(this)" onfocus="inputFocus(this)">
-			    <span id="%1$s_icon"></span>
-			    <p id="%1$s_err" class="text-danger"></p>
-			  </div>
-			  <div class="form-group">
-			    <button type="button" class="btn btn-default">发送验证%3$s</button>
-			    <input type="text" class="form-control" id="%1$s_verify" name="%1$s_verify" placeholder="请填写验证码" onblur="inputBlur(this)" onfocus="inputFocus(this)">
-			    <span id="%1$s_verify_icon"></span>
-			    <span id="%1$s_verify_err" class="text-danger"></span>
-			  </div>
-			  <div class="form-group">
-			    <label for="password">密码</label>
-			    <input type="password" class="form-control" name="password" id="%1$s_password" placeholder="密码长度为6-18位，不能含有空格" onblur="inputBlur(this)" onfocus="inputFocus(this)">
-			    <span id="%1$s_password_icon"></span>
-			    <p id="%1$s_password_err" class="text-danger"></p>
-			  </div> 
-			  <div class="form-group">
-			    <input type="password" class="form-control" name="repassword" id="%1$s_repassword" data-prefix="%1$s_" placeholder="请确认密码" onblur="checkRepasswd(this)" onfocus="inputFocus(this)">
-			    <span id="%1$s_repassword_icon"></span>
-			    <p id="%1$s_repassword_err" class="text-danger"></p>
-			  </div>
-			  <div class="checkbox">
-			    <label>
-			      <input type="checkbox" checked> 我同意<a href="#" data-toggle="modal" data-target="#clauseModal">条款</a>
-			    </label>
-			  </div>
-			  <button type="submit" id="%1$s_submit_btn" class="btn btn-primary">注册</button>
-			';
-			</php>
-			  <!-- 使用邮箱注册 -->
-			  <div role="tabpanel" class="tab-pane fade in active" id="email-signup">
-			  	<form class="form" role="form" action="{:U('Sign/handleSignUp', 'mode=email')}" method="post">
-			  		{:sprintf($tab_content, 'email', '邮箱', '邮件')}
-			  	</form>
-			  </div>
-			  <!-- 使用手机号码注册 -->
-			  <div role="tabpanel" class="tab-pane fade" id="phone-signup">
-			  	<form class="form" role="form" action="{:U('Sign/handleSignUp', 'mode=phone')}" method="post">
-			  		{:sprintf($tab_content, 'phone', '手机号码', '短信')}
-			  	</form>
-			  </div>
-			</div>
+		<div class="col-md-6 col-md-offset-2">
+		
+			<div id="setp1_panel">
+				<h4 class="text-center">第一步：请选择注册方式</h4>
+				<br />
+				<button type="button" class="btn btn-default btn btn-block" onclick="showSetp2('email')">邮箱注册</button>
+				<button type="button" class="btn btn-default btn btn-block" onclick="showSetp2('phone')">手机号码注册</button>
+			</div>	<!-- /setp1_panel -->
+			
+			<div id="setp2_panel" class="hidden">
+				<h4 class="text-center">第二步：填写信息</h4>
+				<br />
+				<div class="form-group has-feedback">
+					<input type="text" class="form-control" id="arg" placeholder="请输入正确的%2$s" onblur="inputBlur(this)" onfocus="inputFocus(this)">
+					<span id="arg_icon"></span>
+				</div>
+				<p id="arg_err" class="text-danger"></p>
+				<form class="form-inline" role="form">
+					<div class="form-group has-success has-feedback">
+						<label class="control-label" for="inputSuccess4"><button type="button" class="btn btn-default">发送验证码</button></label>
+						<input type="text" class="form-control" id="inputSuccess4">
+						<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+					</div>
+					&nbsp;<span>error!!!!!</span>
+				</form>
+				<p></p>
+				<button type="button" class="btn btn-default btn-block">下一步</button>
+			</div>	<!-- /setp2_panel -->
+			
+			
+			
 		</div>
 		<!-- 条款Modal -->
 		<div class="modal fade" id="clauseModal" tabindex="-1" role="dialog" aria-hidden="true">
