@@ -7,7 +7,9 @@ class TestController extends CommonController {
 	
 	//TODO 这里很难的
     public function index(){
-		var_dump(I('post.fuck'));
+    	
+		$mailer = new \Common\Util\Mailer();
+		$mailer->send();
     }
     
 }

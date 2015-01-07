@@ -24,41 +24,11 @@ class SignController extends CommonController {
 		$this->userModel->handleSignUp($mode);
 	}
 	
-	public function ajaxValidate() {
-		$funcMap = array(
-				'email'		=>	'validateEmail',
-		);
-		if (!isset($funcMap[I('post.type')])) {
-			$this->ajaxReturn(
-					array(
-							"status"	=>	false,
-							"msg"		=>	'what a big error!',
-					)
-			);
-		}
-		$result = $this->userModel->$funcMap[I('post.type')](I('post.arg'));
-		// 校验失败
-		if ($result !== true) {
-			$this->ajaxReturn(
-					array(
-							"status"	=>	false,
-							"msg"		=>	$result,
-					)
-			);
-		}
-		// 校验成功
-		$this->ajaxReturn(
-				array(
-						"status"	=>	true,
-				)
-		);
-	}
-	
 	/**
 	 * ajax检测某一字段
 	 */
 	public function ajaxValidateField() {
-		$result = $this->shopkeeperModel->validateField(I('type'));
+		$result = $this->userModel->validateField(I('type'));
 		// 验证失败
 		if ($result !== true) {
 			$this->ajaxReturn(array(

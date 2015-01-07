@@ -29,25 +29,24 @@
 				phone_password:	false,
 				email_repassword:	false,
 				phone_repassword:	false,
-				
 		};
 		
 		function inputBlur(node) {
 			var $node = $(node);
 			var id = $node.attr("id");
+			var name = $node.attr("name");
 			var $parent = $node.parent("div");
 			var $err = $("#" + id + "_err");
 			var $icon = $("#" + id + "_icon");
 			// 检验开始。。。
 			$parent.attr("class", "form-group has-warning has-feedback");
-			$err.html("");
+			$err.html("检测中。。。");
 			$icon.attr("class", "glyphicon glyphicon-warning-sign form-control-feedback");
 			// 检验中。。。
-			var args = {
-					arg:	$node.val(),
-					type:	$node.attr("name")
-			};
-			$.post("{:U('Sign/ajaxValidate')}", args, function(data) {
+			var args = {};
+			args[name] = $node.val();
+			args['type'] = name;
+			$.post("{:U('Sign/ajaxValidateField')}", args, function(data) {
 				// 检验失败
 				if (!data.status) {
 					$parent.attr("class", "form-group has-error has-feedback");
@@ -167,14 +166,17 @@
 		    <div class="modal-content">
 		      <div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-		        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+		        <h4 class="modal-title" id="myModalLabel">条款</h4>
 		      </div>
 		      <div class="modal-body">
-		        ...
+		        <p>1、.................................</p>
+		        <p>2、.................................</p>
+		        <p>3、.................................</p>
+		        <p>4、.................................</p>
+		        <p>5、.................................</p>
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		        <button type="button" class="btn btn-primary">Save changes</button>
 		      </div>
 		    </div>
 		  </div>

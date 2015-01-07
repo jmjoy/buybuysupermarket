@@ -10,17 +10,24 @@ use Think\Model;
  */
 class UserModel extends Model {
 	
+	protected $_map = array(
+			'email_verify'		=>	'verify',
+			'phone_verify'		=>	'verify',
+			'email_password'	=>	'password',
+			'phone_password'	=>	'password',
+	);
+	
 	protected $_validate = array(
+			array('email', 'require', '邮箱不能为空！', 1),
+			array('email', 'validate_email', '邮箱不合法', 1, 'function'),
+			array('email', '', '邮箱已经被注册！', 1, 'unique'),
+
+			array('phone', 'require', '手机号码不能为空！', 1),
+			array('phone', 'validate_phone', '手机号码不合法', 1, 'function'),
+			array('phone', '', '手机号码已经被注册！', 1, 'unique'),
+			
 			array('password', 'require', '密码不能为空！', 1),
 			array('password', '/^\S{6,12}$/', '密码必须为6到12个字符', 1, 'regex'),
-				
-			array('email', 'require', '邮箱不能为空！', 1),
-			array('email', 'is_email', '邮箱不合法', 1, 'function'),
-			array('email', '', '邮箱已经被注册！', 1, 'unique'),
-				
-			array('phone', 'require', '手机号码不能为空！', 1),
-			array('phone', '/^(1[3|5|8])[\d]{9}$/', '手机号码不合法', 1, 'regex'),
-			array('phone', '', '手机号码已经被注册！', 1, 'unique'),
 	);
 	
 	protected $_auto = array (
@@ -39,50 +46,6 @@ class UserModel extends Model {
 			p(I('post.'));
 			break;
 		}
-	}
-	
-	public function validateEmail($arg) {
-		if (!$arg) {
-			return "邮箱地址不能为空！";
-		}
-		if (filter_var($arg, FILTER_VALIDATE_EMAIL) === false) {
-			return "邮箱地址不合法！";
-		}
-		return true;
-	}
-	
-	public function validatePhone($arg) {
-		if (!$arg) {
-			return "手机号码不能为空！";
-		}
-		if (!preg_match('/^(1[3|5|8])[\d]{9}$/', $arg)) {
-			return "邮箱地址不合法！";
-		}
-		return true;
-	}
-	
-	public function validatePasswd($arg) {
-		if (!$arg) {
-			return "密码不能为空！";
-		}
-		if (!preg_match('/^\S{6,18}$/', '密码格式不对！')) {
-			return "密码格式不对！";
-		}
-		return true;
-	}
-	
-	public function validateEmailVerify($arg, $reset = true) {
-		if (!$verify) {
-			return "验证码不能为空";
-		}
-		return true;
-	}
-	
-	public function validatePhoneVerify($arg, $reset = true) {
-		if (!$verify) {
-			return "验证码不能为空";
-		}
-		return true;
 	}
 	
 	/**

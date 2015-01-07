@@ -22,4 +22,7 @@ return array(
 		// 盐
 		'CRYPT_SALT'			=>	'54abe152b6b73',
 		
+		/* 我的第三方类库路径 */
+		'MY_VENDOR_PATH'		=>	'./Vendor/',
+		
 );
