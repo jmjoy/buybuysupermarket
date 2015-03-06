@@ -1,0 +1,40 @@
+<extend name="Public:base" />
+
+<block name="title">登陆 - 后台</block>
+
+<block name="body">
+    <div class="container">
+    	<div class="col-md-offset-4 col-md-4">
+	      <form class="form-signin" role="form">
+	        <h2 class="form-signin-heading text-center">买买网后台</h2>
+	        <br />
+	        <input type="text" id="name" class="form-control" placeholder="管理员账号" required autofocus>
+	        <input type="password" id="password" class="form-control" placeholder="密码" required>
+	        <br />
+			<div class="form-group">
+	        	<button type="button" id="submitBtn" class="btn btn-primary btn-block">登陆到后台</button>
+	        </div>
+	      </form>
+		</div>
+    </div> <!-- /container -->
+</block>
+
+<block name="js">
+	<script type="text/javascript" charset="utf-8">
+	$(function() {
+		$("#submitBtn").click(function() {
+			var args = {
+				"name":		$("#name").val(),
+				"password":	$("#password").val(),
+			}
+			
+			$.post("{:U('Api/AdminSign/postSignIn')}", args, function(data) {
+				
+				console.log(data)
+				
+			}, "json")
+			
+		});
+	});
+	</script>
+</block>

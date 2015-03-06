@@ -1,0 +1,82 @@
+<extend name="Public:base" />
+<block name="css">
+	<style type="text/css">
+		#avatar {
+			width: 60px;
+			height: 60px;
+		}
+		#avatar-big {
+			width: 150px;
+			height: 150px;
+		}
+		.nav-tabs {
+			margin-bottom: 15px;
+		}
+		.good-pic {
+			width: 85px;
+			height: 85px;
+		}
+		#jump-input {
+			width: 45px;
+			height: 22px;
+		}
+		.pagination {
+			margin: 0;
+		}
+		#qty-input {
+			width: 80px;
+		}
+	</style>
+</block>
+<block name="js">
+</block>
+<block name="body">
+	<include file="Public:nav" />
+	<include file="Public:headerSearch" />
+	<section class="container">
+		<include file="leftNav" />
+		<article id="main" class="col-md-9">
+			<div class="row">
+				<div class="col-md-10">
+					<div class="panel panel-default">
+					  <div class="panel-heading">
+					  	<div class="row">
+							<div class="media col-xs-6">
+							  <!-- 头像 -->
+							  <a class="media-left media-middle" href="#">
+							    <img id="avatar" class="img-circle" src="__PUBLIC__/img/default_avatar.jpg" alt="avatar">
+							  </a>
+							  <!-- 用户名和等级 -->
+							  <div class="media-body">
+							    <h4 class="media-heading">Username</h4>
+								<span class="label label-info">Lv. 3</span>
+							  </div>
+							</div>
+							<!-- 显示余额 -->
+							<div class="col-xs-6">
+								<br />
+								<button type="button" class="btn btn-default btn-sm">显示余额</button>
+							</div>
+						  </div> <!-- /row -->
+					  </div>
+					  <div class="panel-body">
+						<div class="row">
+							<div class="col-xs-4">
+								<a class="thumbnail text-center" href="#">待付款</a>
+							</div>
+							<div class="col-xs-4">
+								<a class="thumbnail text-center" href="#">待收货</a>
+							</div>
+							<div class="col-xs-4">
+								<a class="thumbnail text-center" href="#">待评论 <span class="text-danger">999+</span></a>
+							</div>
+						</div>
+					  </div>
+					</div>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+		</article>
+	</section>
+	<include file="Public:footer" />
+</block>

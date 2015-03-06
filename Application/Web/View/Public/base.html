@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title><block name="title"></block></title>
+	
+	<!-- Bootstrap -->
+	<link href="__PUBLIC__/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	  <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	  <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	
+	<style>
+		/* 导航栏高度 */
+		.navbar-nav>li>a {
+			padding-top: 10px;
+			padding-bottom: 10px;
+		}
+		.navbar-brand {
+			height: 40px;
+			padding-top: 10px;
+		}
+		.navbar {
+			min-height: 40px;
+		}
+		.navbar-toggle {
+			margin-top: 4px;
+			margin-bottom: 4px;
+		}
+		#navbar-space {
+			height: 60px;
+		}
+		
+		/* 头部搜索栏 */
+		#header-search {
+			margin-bottom: 30px;
+		} 
+		#header-search-search {
+			padding-top: 15px;
+		}
+	</style>
+	
+	<block name="css"></block>
+
+</head>
+
+<body>
+	<block name="body"></block>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="__PUBLIC__/jquery/jquery-1.11.2.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
+	<block name="js"></block>
+</body>
+</html>
