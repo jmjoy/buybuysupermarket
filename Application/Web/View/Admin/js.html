@@ -1,0 +1,29 @@
+<script type="text/javascript" charset="utf-8">
+	$(function() {
+		// 管理员账号显示
+		var adminName = localStorage.getItem("adminName")
+		$("#adminNamePanel").html(adminName)
+		
+		// 注销
+		$("#signOutBtn").click(function() {
+			var sessId = localStorage.getItem("SESSID")
+			$.post("{:U('Api/Admin/postSignOut')}", {"SESSID": sessId}, function(data) {
+				signTimeOut(data.status)
+				localStorage.removeItem("adminName")
+				location = "{:U('Admin/index')}"
+			}, "json")
+		})
+	});
+
+	/**
+	 * 登陆超时处理
+	 */
+	function signTimeOut(status) {
+		if (status == 403) {
+			alert("登陆超时")
+			localStorage.removeItem("adminName")
+			location = "{:U('Admin/index')}"
+			throw "exit"
+		}
+	}
+</script>

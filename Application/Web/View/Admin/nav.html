@@ -2,31 +2,17 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">买买网后台</a>
+      <a class="navbar-brand" href="javascript:;">买买网后台</a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">用户<span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="{:U('Setting/listAdmin')}">管理员管理</a></li>
-          </ul>
-        </li>	<!-- /dropdown -->
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">设置<span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="{:U('Setting/listAdmin')}">管理员管理</a></li>
-            <li><a href="{:U('Setting/listAuth')}">权限管理</a></li>
-            <li><a href="{:U('Setting/listRole')}">角色管理</a></li>
-            <li class="divider"></li>
-            <li><a href="{:U('Setting/info')}">phpinfo</a></li>
-          </ul>
-        </li>	<!-- /dropdown -->
+        <li><a href="{:U('Admin/main')}">主页</a></li>
+        <li><a href="{:U('Admin/category')}">商品种类</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">[root]</a></li>
-        <li><a href="#">注销</a></li>
+        <li><a id="adminNamePanel" href="javascript:;"></a></li>
+        <li><a id="signOutBtn" href="javascript:;">注销</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container -->
