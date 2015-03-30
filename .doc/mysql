@@ -8,6 +8,13 @@ Table user:
     last_ip
     default_address
 
+Table category:
+    id
+    name
+    remark
+    pic_path
+    parent_id
+
 Table area:
     id
     name
@@ -29,6 +36,10 @@ Table commodity:
     id
     name
     price
-    is_garbage
+    pic_path
+    category_id
+    category_name
+    ctime
+    mtime
     is_del
 
