@@ -1,0 +1,34 @@
+Table user:
+    id
+    phone
+    password
+    nickname
+    ctime
+    last_time
+    last_ip
+    default_address
+
+Table area:
+    id
+    name
+    parent_id
+
+Table address:
+    id
+    uid
+    province_id
+    province_name
+    city_id
+    city_name
+    area_id
+    area_name
+    detail
+    is_del
+
+Table commodity:
+    id
+    name
+    price
+    is_garbage
+    is_del
+
