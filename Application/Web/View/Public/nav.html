@@ -26,14 +26,14 @@
 			      <div class="modal-body">
 				      <form class="form-signin" role="form" action="#" method="post">
 				        <h5 class="form-signin-heading text-danger">用户名(或邮箱、手机)或密码错误</h5>
-				        <input type="text" class="form-control" placeholder="用户名/邮箱/手机号" required autofocus>
-				        <input type="password" class="form-control" placeholder="密码" required>
+				        <input type="text" id="phoneInput" class="form-control" placeholder="手机号码" required autofocus>
+				        <input type="password" id="passwordInput" class="form-control" placeholder="密码" required>
 				        <div class="checkbox">
 				          <label>
-				            <input type="checkbox" value="remember-me"> 保持登陆状态十天
+				            <input type="checkbox" id="autoSignInInput" value="remember-me"> 保持登陆状态十天
 				          </label>
 				        </div>
-				        <button class="btn btn-lg btn-primary btn-block" type="submit">登陆</button>
+				        <button ="signInBtn" class="btn btn-lg btn-primary btn-block" type="submit">登陆</button>
 				      </form>
 			      </div>
 			      <div class="modal-footer">

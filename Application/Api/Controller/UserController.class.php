@@ -12,6 +12,7 @@ class UserController extends CommonController {
         // 获取输入
         $phone = I('post.phone');
         $password = I('post.password');
+        $autoSignIn = I('post.autoSignIn');
 
         $result = D('Common/User')->handleSignIn($phone, $password);
 
@@ -26,6 +27,13 @@ class UserController extends CommonController {
         // 成功了，将用户的资料放进session里面
         session('user', $row);
 
+        // 判断需不需要保存自动登陆信息
+        if ($autoSignIn) {
+            $md5Passwd = md5($password);
+            $cookieText = my_encrypt("$phone|$md5Passwd");
+            cookie("user_autoSignIn", $cookieText, 10*24*60*60); // 保存10天
+        }
+
         return $this->ajaxReturn([
             'status'    =>  200,
         ]);
@@ -34,7 +42,7 @@ class UserController extends CommonController {
     /**
      * 处理注册请求
      */
-    public function postHandleSignIn() {
+    public function postHandleSignUp() {
         // 获取输入
         $phone = I('post.phone');
         $password = I('post.password');

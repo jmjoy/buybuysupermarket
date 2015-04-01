@@ -4,12 +4,12 @@
  * 格式化打印变量，接收可变参数
  */
 function p() {
-	echo "<pre>\n";
-	foreach (func_get_args() as $arg) {
-		var_dump($arg);
-	}
-	echo "</pre>\n";
-	die();
+    echo "<pre>\n";
+    foreach (func_get_args() as $arg) {
+        var_dump($arg);
+    }
+    echo "</pre>\n";
+    die();
 }
 
 /**
@@ -18,11 +18,11 @@ function p() {
  * @return boolean
  */
 function validate_email($email) {
-	$result = filter_var($email, FILTER_VALIDATE_EMAIL);
-	if ($result === false) {
-		return false;
-	}
-	return true;
+    $result = filter_var($email, FILTER_VALIDATE_EMAIL);
+    if ($result === false) {
+        return false;
+    }
+    return true;
 }
 
 /**
@@ -31,10 +31,10 @@ function validate_email($email) {
  * @return boolean
  */
 function validate_phone($phone) {
-	if (!preg_match('/^(1[3|5|8])[\d]{9}$/', $phone)) {
-		return false;
-	}
-	return true;
+    if (!preg_match('/^1\d{10}$/', $phone)) {
+        return false;
+    }
+    return true;
 }
 
 /**
@@ -42,7 +42,7 @@ function validate_phone($phone) {
  * @return string
  */
 function current_datetime() {
-	return date('Y-m-d H:i:s');
+    return date('Y-m-d H:i:s');
 }
 
 /**
@@ -50,5 +50,31 @@ function current_datetime() {
  * @return string
  */
 function guid() {
-	return strtoupper(md5(uniqid(mt_rand(), true)));
+    return strtoupper(md5(uniqid(mt_rand(), true)));
+}
+
+/**
+ * 对称加密算法（加密）
+ */
+function my_encrypt($text) {
+    $key = C('CRYPT_SALT');
+    $key_size = strlen($key);
+    $iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC);
+    $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
+    $ciphertext = mcrypt_encrypt(MCRYPT_RIJNDAEL_128, $key, $text, MCRYPT_MODE_CBC, $iv);
+    $ciphertext = $iv . $ciphertext;
+    return base64_encode($ciphertext);
+}
+
+/**
+ * 对称加密算法（解密）
+ */
+function my_decrypt($text) {
+    $key = C('CRYPT_SALT');
+    $ciphertext_dec = base64_decode($text);
+    $iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC);
+    $iv_dec = substr($ciphertext_dec, 0, $iv_size);
+    $ciphertext_dec = substr($ciphertext_dec, $iv_size);
+    $plaintext_dec = mcrypt_decrypt(MCRYPT_RIJNDAEL_128, $key, $ciphertext_dec, MCRYPT_MODE_CBC, $iv_dec);
+    return $plaintext_dec;
 }

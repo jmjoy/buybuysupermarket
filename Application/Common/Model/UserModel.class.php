@@ -106,5 +106,4 @@ class UserModel extends CommonModel {
 
         $this->data($data)->where('id = %d')->save();
     }
-
 }
