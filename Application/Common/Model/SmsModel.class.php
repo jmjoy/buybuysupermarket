@@ -28,30 +28,20 @@ class SmsModel extends CommonModel {
     /**
      * 保存防止短信攻击的缓存的前缀
      */
-    public $CanSendCachePrefix = 'sms_can_send_';
+    public $canSendCachePrefix = 'sms_can_send_';
 
     /**
      * 发送验证码到指定的手机号码
      */
     public function sendVerifyCode($phone) {
-        // 获取防止短信攻击缓存
-        $cache = S($this->CanSendCachePrefix . $phone);
-        if (!$cache) {
-            $cache = [
-                'last_time' =>  0,
-                'count'     =>  0,
-            ];
-        }
+        // 获取防止短信
+        $resultCode = limit_day_operate($this->canSendCachePrefix, $phone, 60, 10);
 
-        $nowTime = time();
-
-        // 1分钟内不能重发
-        if ($cache['last_time'] + 60 > $nowTime) {
+        switch ($resultCode) {
+        case 1:
             return '1分钟之内不能重发短信';
-        }
 
-        // 一天之内只能发10条短信
-        if ($cache['count'] > 10) {
+        case 2:
             return '该号码今天已达短信发送上限（10条）';
         }
 

@@ -78,3 +78,44 @@ function my_decrypt($text) {
     $plaintext_dec = mcrypt_decrypt(MCRYPT_RIJNDAEL_128, $key, $ciphertext_dec, MCRYPT_MODE_CBC, $iv_dec);
     return $plaintext_dec;
 }
+
+/**
+ * 一天之内隔多少时间可以做啥，一天之内可以做多少次啥（比如手机短信）
+ * @param string $prefix 缓存的键前缀
+ * @param string $key 缓存的键（比如手机号码）
+ * @param int $waitTime 等待时间，就是隔多少时间才能发一次
+ * @param int $limitCount 一天之内只能发多少次
+ * @return int 0代表发送成功，1代表在等待时间之内，2代表一天之内限制
+ */
+function limit_day_operate($prefix, $key, $waitTime, $limitCount) {
+    // 获取缓存
+    $sKey = $prefix . $key;
+    $cache = S($sKey);
+
+    // 获取今天的日期
+    $nowDate = date('Ymd');
+    $nowTime = time();
+
+    // 判断缓存存不存在，并且是不是当天的缓存
+    if ($cache && $cache['date'] == $nowDate) {
+        // 判断在不在等待时间之内
+        if ($cache['oldtime'] + $waitTime > $nowTime) {
+            return 1;
+        }
+
+        // 判断有没有超过当天的量
+        if ($cache['count'] >= $limitCount) {
+            return 2;
+        }
+    }
+
+    // 重新生成缓存
+    $cache['oldtime'] = $nowTime;
+    $cache['count'] = isset($cache['count']) ? $cache['count'] + 1 : 0;
+    $cache['date'] = $nowDate;
+
+    // 重新保存缓存
+    S($sKey, $cache, 24*60*60);
+
+    return 0;
+}
