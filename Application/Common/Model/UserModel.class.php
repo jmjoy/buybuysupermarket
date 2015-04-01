@@ -13,18 +13,11 @@ class UserModel extends CommonModel {
     /**
      * 验证规则
      */
-    public $validateRules;
-
-    /**
-     * 初始方法
-     */
-    public function _initialize() {
-        $this->validateRules = [
-            'nickname'     =>  ['nickname', '/^[\-\w\x{4e00}-\x{9fa5}]{2,8}$/u', '昵称必须为2～8个字符！', 1, 'regex'],
-            'phone'        =>  ['phone', '/^1\d{10}$/', '手机号码不正确', 1, 'regex'],
-            'password'     =>  ['password', '/^[\s\S]{6,32}$/', '密码长度应该为6～32位', 1, 'regex'],
-        ];
-    }
+    public $validateRules = [
+        'nickname'     =>  ['nickname', '/^[\-\w\x{4e00}-\x{9fa5}]{2,8}$/u', '昵称必须为2～8个字符！', 1, 'regex'],
+        'phone'        =>  ['phone', '/^1\d{10}$/', '手机号码不正确', 1, 'regex'],
+        'password'     =>  ['password', '/^[\s\S]{6,32}$/', '密码长度应该为6～32位', 1, 'regex'],
+    ];
 
     /**
      * 处理登陆请求
