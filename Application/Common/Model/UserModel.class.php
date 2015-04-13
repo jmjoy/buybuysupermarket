@@ -39,7 +39,9 @@ class UserModel extends CommonModel {
         }
 
         // 数据库验证
-        $row = $this->where('phone = "%s"', $phone)->find();
+        $row = $this->field(true)
+                    ->where('phone = "%s"', $phone)
+                    ->find();
 
         if ($row === false) {
             return $this->getDbError();
@@ -55,6 +57,30 @@ class UserModel extends CommonModel {
 
         // 登陆成功后，修改最后登陆时间和ip
         $this->loginSuccess($row['id']);
+
+        return $row;
+    }
+
+    /**
+     * 处理存在自动登陆cookie时自动登陆
+     */
+    public function handleAutoSignIn($phone, $md5Passwd) {
+        // 根据phone找出用户
+        $row = $this->field(true)
+                    ->where('phone = "%s"', $phone)
+                    ->find();
+
+        if ($row === false) {
+            return $this->getDbError();
+        }
+
+        if ($row === null) {
+            return '手机号码不存在';
+        }
+
+        if ($row['password'] != $md5Passwd) {
+            return '密码错误';
+        }
 
         return $row;
     }

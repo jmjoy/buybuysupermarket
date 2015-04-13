@@ -32,6 +32,16 @@ class UserAutoSignInBehavior extends Behavior {
         }
 
         list($phone, $md5Passwd) = $arr;
+        $row = D('Common/User')->handleAutoSignIn($phone, $md5Passwd);
+
+        // 校验失败了，这个cookie肯定有问题，删掉
+        if (!is_array($phone)) {
+            cookie('user_autoSignIn', null);
+            return;
+        }
+
+        // 自动登陆成功了，将用户数据放进session
+        session('user', $row);
     }
 
 }
