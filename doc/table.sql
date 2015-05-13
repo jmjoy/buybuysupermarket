@@ -46,6 +46,30 @@ LOCK TABLES `by_address` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `by_admin`
+--
+
+DROP TABLE IF EXISTS `by_admin`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `by_admin` (
+  `id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `name` varchar(8) NOT NULL DEFAULT '' COMMENT '管理员账号',
+  `password` char(40) NOT NULL DEFAULT '' COMMENT '密码',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='管理员表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `by_admin`
+--
+
+LOCK TABLES `by_admin` WRITE;
+/*!40000 ALTER TABLE `by_admin` DISABLE KEYS */;
+/*!40000 ALTER TABLE `by_admin` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `by_area`
 --
 
@@ -164,7 +188,7 @@ CREATE TABLE `by_user` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
   `phone` char(11) NOT NULL DEFAULT '' COMMENT '手机号码',
   `nickname` varchar(8) NOT NULL DEFAULT '' COMMENT '用户昵称',
-  `password` varchar(32) NOT NULL DEFAULT '' COMMENT '密码',
+  `password` char(40) NOT NULL DEFAULT '' COMMENT '密码',
   `create_time` datetime DEFAULT NULL,
   `last_time` datetime DEFAULT NULL,
   `last_ip` varchar(64) NOT NULL DEFAULT '' COMMENT '最后登录的IP',
@@ -194,4 +218,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-05-13 14:24:06
+-- Dump completed on 2015-05-13 18:07:38

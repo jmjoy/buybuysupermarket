@@ -1,6 +1,6 @@
 <?php
 
-namespace Web\Controller;
+namespace Home\Controller;
 use Think\Controller;
 
 class CommonController extends Controller {

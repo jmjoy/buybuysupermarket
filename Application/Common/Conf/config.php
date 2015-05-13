@@ -25,7 +25,7 @@ return array(
         'DATA_CACHE_TIME'       =>  60,      // 数据缓存有效期 0表示永久缓存
 
         /* 默认设定 */
-        'DEFAULT_MODULE'        =>  'Web',  // 默认模块
+        'DEFAULT_MODULE'        =>  'Home',  // 默认模块
 
         /* 我的配置 */
         'CRYPT_SALT'            =>  'e2e8912916b9da5abafb4ab7b258bf10f46af451',
