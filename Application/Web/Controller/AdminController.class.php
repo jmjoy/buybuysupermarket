@@ -1,7 +1,7 @@
 <?php
 
 namespace Web\Controller;
-use Think\Controller;
+use Web\Controller\CommonController;
 
-class AdminController extends Controller {
+class AdminController extends CommonController {
 }

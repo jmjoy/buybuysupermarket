@@ -1,6 +1,15 @@
 <?php
 return array(
 
+        /* 模板替换使用 */
+        'TMPL_PARSE_STRING'     =>  array(
+             '__IMG__'     => '/Public/img',
+             '__CSS__'     => '/Public/css',
+             '__JS__'     => '/Public/js',
+             '__VENDOR__' => '/Public/vendor',
+             '__UPLOAD__' => '/Public/upload',
+        ),
+
         /* URL模式 */
         'URL_MODEL'             =>  2,          // 2 (REWRITE  模式);
 

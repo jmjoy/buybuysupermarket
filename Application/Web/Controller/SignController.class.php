@@ -1,7 +1,7 @@
 <?php
 
 namespace Web\Controller;
-use Think\Controller;
+use Web\Controller\CommonController;
 
-class SignController extends Controller {
+class SignController extends CommonController {
 }

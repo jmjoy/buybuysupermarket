@@ -1,6 +1,6 @@
 <?php
 
-namespace Home\Behaviors;
+namespace Common\Behaviors;
 use Think\Behavior;
 
 /**

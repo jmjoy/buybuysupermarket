@@ -1,7 +1,7 @@
 <?php
 
 namespace Web\Controller;
-use Think\Controller;
+use Web\Controller\CommonController;
 
-class IndexController extends Controller {
+class IndexController extends CommonController {
 }
