@@ -1,7 +1,14 @@
-buybuysupermarket
-=================
+# buybuysupermarket
 
 BuyBuy - 网上超市
+
+## 依赖管理
+
+PHP资源使用composer:    https://github.com/composer/composer
+
+前端资源使用bower:      https://github.com/bower/bower
+
+## 项目形式
 
 Model放在Common/Model里
 
