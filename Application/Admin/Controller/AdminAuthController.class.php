@@ -8,15 +8,16 @@ use Admin\Controller\CommonController;
  * @author jmjoy
  *
  */
-class AuthController extends CommonController {
+class AdminAuthController extends CommonController {
 
     /**
      * 判断管理员有没有登录
      */
     public function _initialize() {
-        parent::_initialize();
-        if (!session('admin')['id']) {
-            die('Access deny!');
+        if (!isset($_SESSION['admin']['id'])) {
+            // 没有登录则跳转到登录页面
+            $this->redirect('Index/index');
+            die();
         }
     }
 

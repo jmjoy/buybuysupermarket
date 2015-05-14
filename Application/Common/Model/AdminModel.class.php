@@ -10,47 +10,51 @@ use Common\Model\CommonModel;
  */
 class AdminModel extends CommonModel {
 
-	/**
-	 * 管理员登陆
-	 * @param unknown $name
-	 * @param unknown $password
-	 * @return string|multitype:string
-	 */
-	public function signIn($name, $password) {
-		// 获取正确的密码
-		$md5Passwd = $this->where('name = "%s"', $name)
-							->getField('password');
+    /**
+     * 管理员登陆
+     * @param unknown $name
+     * @param unknown $password
+     * @return string|multitype:string
+     */
+    public function signIn($inputs) {
+        // 检验输入
+        if (!isset($inputs['name'])) {
+            return '请输入管理员账号';
+        }
+        if (!isset($inputs['password'])) {
+            return '请输入密码';
+        }
 
-		// 校验
-		if ($md5Passwd === false) {
-			return $this->getDbError();
-		}
+        // 获取正确的密码
+        $result = $this->field(array('id', 'name', 'password'))
+                         ->where('name = "%s"', $inputs['name'])
+                         ->find();
 
-		if ($md5Passwd === null) {
-			return '用户名不存在';
-		}
+        // 校验
+        if ($result === false) {
+            return '数据库异常，请重试';
+        }
 
-		if (md5(sha1($password)) != $md5Passwd) {
-			return '密码错误';
-		}
+        if ($result === null) {
+            return '用户名不存在';
+        }
 
-		// 登陆成功，创建Session，并返回sessionId
-		$sessId = guid();
-		$value['admin']['name'] = $name;
-		S('SESS_'.$sessId, $value, 3600);
+        if (sha1($inputs['password']) != $result['password']) {
+            return '密码错误';
+        }
 
-		// 成功
-		return [$sessId];
-	}
+        // 登录验证通过
+        return $result;
+    }
 
-	/**
-	 * 注销
-	 * @param unknown $sessId
-	 */
-	public function signOut($sessId) {
-		$sessArr = S($sessId);
-		unset($sessArr['admin']);
-		S($sessId, $sessArr);
-	}
+    /**
+     * 注销
+     * @param unknown $sessId
+     */
+    public function signOut($sessId) {
+        $sessArr = S($sessId);
+        unset($sessArr['admin']);
+        S($sessId, $sessArr);
+    }
 
 }

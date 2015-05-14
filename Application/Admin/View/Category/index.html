@@ -1,0 +1,62 @@
+<extend name="Common@Public:base" />
+
+<block name="title">后台 - 商品种类</block>
+
+<block name="body">
+    <include file="Public:nav" />
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <hr />
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>ID</th>
+                            <th>分类图标</th>
+                            <th>分类名</th>
+                            <th>备注</th>
+                            <th>级别</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox" /></td>
+                            <td>1</td>
+                            <td><img src="" alt=""></td>
+                            <td>Category_name</td>
+                            <td>Category_remark</td>
+                            <td>0</td>
+                            <td>
+                                <button type="button" class="btn btn-info">添加子分类</button>
+                                <button type="button" class="btn btn-warning">编辑</button>
+                                <button type="button" class="btn btn-danger">删除</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <button type="button" class="btn btn-default btn-link">全选</button>
+                <button type="button" class="btn btn-default btn-link">全不选</button>
+                <button type="button" class="btn btn-default btn-link">反选</button>
+                <button id="addBtn" class="btn btn-info" type="button">新增分类</button>
+                <button type="button" class="btn btn-danger">批量删除</button>
+            </div>
+        </div>
+
+    </div>	<!-- /container -->
+
+</block>
+
+<block name="css">
+</block>
+
+<block name="js">
+</block>

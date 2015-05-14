@@ -8,21 +8,13 @@ use Admin\Controller\AdminAuthController;
  * @author jmjoy
  *
  */
-class ManageController extends AdminAuthController {
+class CategoryController extends AdminAuthController {
 
     /**
      * 管理首页
      */
     public function index() {
         $this->display();
-    }
-
-    public function phpinfo() {
-        $this->display();
-    }
-
-    public function phpinfoPage() {
-        phpinfo();
     }
 
 }

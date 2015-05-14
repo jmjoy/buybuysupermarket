@@ -1,0 +1,19 @@
+<extend name="Common@Public:base" />
+
+<block name="title">后台 - 基础信息</block>
+
+<block name="body">
+	<include file="Public:nav" />
+
+    <div class="container-fluid">
+        <iframe src="{:U('Manage/phpinfoPage')}" class="full-iframe"></iframe>
+    </div>
+</block>
+
+<block name="css">
+    <link rel="stylesheet" href="__CSS__/Admin/manage.css" type="text/css" media="all" />
+</block>
+
+<block name="js">
+    <script src="__JS__/Admin/manage.js" type="text/javascript" charset="utf-8"></script>
+</block>

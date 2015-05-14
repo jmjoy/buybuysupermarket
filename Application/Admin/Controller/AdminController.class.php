@@ -1,14 +1,14 @@
 <?php
 
 namespace Admin\Controller;
-use Admin\Controller\AuthController;
+use Admin\Controller\AdminAuthController;
 
 /**
  * 管理员登陆验证
  * @author jmjoy
  *
  */
-class AdminController extends AuthController {
+class AdminController extends AdminAuthController {
 
 	/**
 	 * 注销

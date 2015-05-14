@@ -6,7 +6,7 @@ use Think\Controller;
 class CommonController extends Controller {
 
     /**
-     *
+     * get为前缀的方法直接get请求，post为前缀的方法只接受post请求
      */
     public function _initialize() {
         // 判断是get还是post方法

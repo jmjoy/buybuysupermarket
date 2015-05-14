@@ -119,3 +119,15 @@ function limit_day_operate($prefix, $key, $waitTime, $limitCount) {
 
     return 0;
 }
+
+/**
+ * 删除保存在session中的verifycode的信息
+ */
+function unset_verify_session($id='', $seKey='ThinkPHP.CN') {
+    // 使用Verify类的方式取session键
+    $key = substr(md5($seKey), 5, 8);
+    $str = substr(md5($seKey), 8, 10);
+    $key = md5($key . $str) . $id;
+
+    session($key, null);
+}

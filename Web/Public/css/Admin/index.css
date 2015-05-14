@@ -1,0 +1,9 @@
+#verifyInput {
+    width: 10em;
+}
+
+#verifyImg {
+    margin-left: 1em;
+    height: 34px;
+    cursor: pointer;
+}

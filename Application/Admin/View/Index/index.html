@@ -16,24 +16,33 @@
             <div class="col-md-offset-4 col-md-4">
 
               <form class="form-signin" role="form">
+
                   <div class="form-group">
                       <label for="nameInput">管理员账号</label>
                       <input type="text" id="nameInput" class="form-control" placeholder="管理员账号" autofocus />
                   </div>
                   <div class="form-group">
                       <label for="passwordInput">管理员密码</label>
-                      <input type="password" id="passwordInput" class="form-control" placeholder="密码" />
+                      <input type="password" id="passwordInput" class="form-control" placeholder="管理员密码" />
                   </div>
                   <div class="form-group">
-                      <label for="verifyInput">验证码</label>
-                      <input type="text" id="verifyInput" class="form-control" placeholder="验证码" />
+                      <label for="verifyInput" class="block" id="verifyLabel">验证码</label>
+                      <input type="text" class="form-control inline-block" id="verifyInput" placeholder="点击图片换一张" />
+                      <img src="{:U('Home/Index/verifyImg')}" alt="验证码" title="点击图片换一张" class="inline-block" id="verifyImg" />
                   </div>
-                <br />
-                <div class="form-group">
-                    <button type="button" id="submitBtn" class="btn btn-primary btn-block">登陆到后台</button>
-                </div>
+
+                  <hr />
+
+                  <div class="form-group">
+                      <button type="button" id="submitBtn" class="btn btn-primary btn-block">登陆到后台</button>
+                  </div>
+
               </form>
+
+              <hr />
+
               <div id="errPanel" class="alert alert-danger text-center hidden" role="alert"></div>
+
             </div>
 
         </div>
@@ -44,6 +53,16 @@
 
 </block>
 
+<block name="css">
+    <link rel="stylesheet" href="__CSS__/Admin/index.css" type="text/css" media="all" />
+</block>
+
 <block name="js">
+    <script type="text/javascript" charset="utf-8">
+        var g = {
+            "postSignInUrl":    "{:U('Api/AdminSign/postSignIn')}",
+            "manageUrl":        "{:U('Manage/index')}"
+        }
+    </script>
     <script src="__JS__/Admin/index.js" type="text/javascript" charset="utf-8"></script>
 </block>
