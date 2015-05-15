@@ -8,7 +8,7 @@ use Api\Controller\AdminAuthController;
  * @author jmjoy
  *
  */
-class AdminController extends AdminAuthController {
+class AdminController extends CommonController {
 
     /**
      * 只有登录了管理员才能执行操作，否则返回403
@@ -24,6 +24,12 @@ class AdminController extends AdminAuthController {
         }
 
         $this->adminName = $sessArr['admin']['name'];
+    }
+
+    public function postAddOneLevelCategory() {
+        $inputs = $_POST;
+        $result = D('Common/Category')->addCategory($inputs);
+        $this->simpleAjaxReturn($result);
     }
 
     /**

@@ -13,27 +13,27 @@ class CommonController extends Controller {
         if (strpos(ACTION_NAME, 'get') === 0) {
             // 是get方法
             if (!IS_GET) {
-                $this->ajaxReturn([
+                $this->ajaxReturn(array(
                     'status'    =>  400,
                     'msg'       =>  '不是GET请求',
-                ]);
+                ));
             }
 
         } else if (strpos(ACTION_NAME, 'post') === 0) {
             // 是post方法
             if (!IS_POST) {
-                $this->ajaxReturn([
+                $this->ajaxReturn(array(
                         'status'    =>  400,
                         'msg'       =>  '不是POST请求',
-                ]);
+                ));
             }
 
         } else {
             // 都不是
-            $this->ajaxReturn([
+            $this->ajaxReturn(array(
                     'status'    =>  400,
                     'msg'       =>  '不是有效请求',
-            ]);
+            ));
         }
     }
 
@@ -45,16 +45,16 @@ class CommonController extends Controller {
     protected function simpleAjaxReturn($result, $code = 400) {
         // 失败
         if ($result !== true) {
-            $this->ajaxReturn([
-                    'status'    =>  400,
-                    'msg'       =>  $result,
-            ]);
+            $this->ajaxReturn(array(
+                'status'    =>  400,
+                'msg'       =>  $result,
+            ));
         }
 
         // 成功
-        $this->ajaxReturn([
+        $this->ajaxReturn(array(
                 "status"    =>  200,
-        ]);
+        ));
     }
 
     /**
@@ -64,27 +64,27 @@ class CommonController extends Controller {
      * @param string $rootPath 图片保存的根目录
      * @param array $thumbSize 如果需要缩略图，则传入缩略后的长和宽数组，
      *                         不需要则传入空值
-     * @return array|string 如果成功返回[相对文件路径]，否则返回错误信息
+     * @return array|string 如果成功返回 array(相对文件路径)，否则返回错误信息
      */
-    protected function handleImgUpload($fileKey, $maxSize, $rootPath, $thumbSize = []) {
-        $config = [
+    protected function handleImgUpload($fileKey, $maxSize, $rootPath, $thumbSize = array()) {
+        $config = array(
             'maxSize'   =>  $maxSize,
             'rootPath'  =>  $rootPath,
             'savePath'  =>  '',
-            'saveName'  =>  ['uniqid',''],
-            'exts'      =>  [
-                'jpg','png', 'jpeg', 'bmp'
-            ],
-            'mines'     =>  [
+            'saveName'  =>  array('uniqid',''),
+            'exts'      =>  array(
+                'jpg','png', 'jpeg', 'bmp',
+            ),
+            'mines'     =>  array(
                 'image/jpeg',
                 'image/png',
                 'image/nbmp',
                 'application/x-MS-bmp',
                 'image/vnd.wap.wbmp',
-            ],
+            ),
             'autoSub'   =>  true,
-            'subName'   =>  ['date','Y/md'],
-        ];
+            'subName'   =>  array('date', 'Y/md'),
+        );
 
         $upload = new \Think\Upload($config);
 
@@ -107,7 +107,7 @@ class CommonController extends Controller {
                   ->save($rootPath . $filepath);
         }
 
-        return [$filepath];
+        return array($filepath);
     }
 
 }

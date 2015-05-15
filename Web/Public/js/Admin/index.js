@@ -1,16 +1,7 @@
 $(function() {
 
-    // 点击验证码换一张
-    $("#verifyImg").click(function() {
-        this.src = this.src;
-    });
-
     // 登录请求
-    $("#submitBtn").click(function() {
-        // 先禁用
-        $("#submitBtn").attr("disabled", "disabled");
-        $("#submitBtn").html("登陆中。。。");
-
+    $("#signInform").submit(function() {
         // 获取数据
         var args = {
             "name":     $.trim($("#nameInput").val()),
@@ -32,9 +23,18 @@ $(function() {
             return showErr("验证码不正确");
         }
 
+        // 先禁用
+        var submitBtn = $(this).find("[type=submit]");
+        submitBtn.attr("disabled");
+        submitBtn.html("登陆中。。。");
+
         // 联网检验
         $.post(g.postSignInUrl, args, function(data) {
             console.log(data);
+
+            // 恢复被禁用
+            submitBtn.removeAttr("disabled");
+            submitBtn.html("登陆到后台");
 
             // 登陆失败
             if (data.status != 200) {
@@ -46,8 +46,17 @@ $(function() {
 
         }, "json")
 
+        // 防止submit跳转
+        return false;
+
     });
 
+    // 点击验证码换一张
+    $("#verifyImg").click(function() {
+        this.src = this.src;
+    });
+
+    // 隐藏错误信息
     $("input").focus(function() {
         $("#errPanel").addClass("hidden");
     });
@@ -60,10 +69,6 @@ $(function() {
 function showErr(err) {
     $("#errPanel").html(err)
     $("#errPanel").removeClass("hidden")
-
-    // 恢复被禁用
-    $("#submitBtn").removeAttr("disabled")
-    $("#submitBtn").html("登陆到后台")
 
     return false;
 }

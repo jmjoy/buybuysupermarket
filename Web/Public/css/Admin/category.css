@@ -1,0 +1,9 @@
+#editPicImg {
+    width: 100px;
+    cursor: pointer;
+}
+#editPicInput {
+    display: inline;
+    margin-left: 1em;
+    width: 50%;
+}

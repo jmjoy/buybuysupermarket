@@ -7,24 +7,48 @@
 
     <div class="container">
 
-        <form>
+        <div class="col-md-6 col-md-offset-3">
+            <form id="editForm">
+                <h2 class="text-center">编辑一级分类</h2>
+                <hr />
+                <div class="form-group">
+                    <label for="editNameInput">分类名</label>
+                    <input type="text" id="editNameInput" class="form-control" placeholder="2~8个字符" />
+                </div>
+                <div class="form-group">
+                    <label for="editRemarkInput">备注</label>
+                    <textarea id="editRemarkInput" class="form-control" placeholder="少于255个字符"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="editPicInput" class="block">分类LOGO</label>
+                    <img src="__IMG__/default_frame.png" alt="LOGO" id="editPicImg" class="img-responsive img-rounded inline-block" />
+                    <input type="file" id="editPicInput" class="form-control" />
+                </div>
+                <hr />
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">完成</button>
+                </div>
+            </form>
 
-            <div class="form-group">
-                <label for="parentIdSelect">上一级分类</label>
-                <select id="parentIdSelect" class="form-control">
-                    <option value="0">不选，作为顶级分类</option>
-                    <option value="1">XXXXX</option>
-                </select>
-            </div>
+            <hr />
+            <!-- 错误提示框 -->
+            <div id="errPanel" class="alert alert-danger text-center hidden"></div>
 
-        </form>
+        </div>
 
     </div>	<!-- /container -->
 
 </block>
 
 <block name="css">
+    <link rel="stylesheet" href="__CSS__/Admin/category.css" type="text/css" media="all" />
 </block>
 
 <block name="js">
+    <script type="text/javascript" charset="utf-8">
+        var g = {
+            "addOneLevelCategoryUrl":   "{:U('Api/Admin/postAddOneLevelCategory')}"
+        };
+    </script>
+    <script src="__JS__/Admin/category.js" type="text/javascript" charset="utf-8"></script>
 </block>

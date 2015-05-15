@@ -17,4 +17,11 @@ class CategoryController extends AdminAuthController {
         $this->display();
     }
 
+    /**
+     * 新增分类
+     */
+    public function add() {
+        $this->display('edit');
+    }
+
 }
