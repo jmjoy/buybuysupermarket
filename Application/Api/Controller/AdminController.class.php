@@ -15,31 +15,33 @@ class AdminController extends CommonController {
      */
     public function _initialize() {
         // 检验有没有登陆
-
-        if (!$sessArr || !isset($sessArr['admin'])) {
+        if (!isset($_SESSION['admin']['id'])) {
+            //  die方法
             $this->ajaxReturn([
                     'status'    =>  403,
                     'msg'       =>  '管理员没有登陆',
             ]);
         }
-
-        $this->adminName = $sessArr['admin']['name'];
-    }
-
-    public function postAddOneLevelCategory() {
-        $inputs = $_POST;
-        $result = D('Common/Category')->addCategory($inputs);
-        $this->simpleAjaxReturn($result);
     }
 
     /**
-     * 注销
+     * 注销操作
      */
     public function postSignOut() {
-        D('Common/Admin')->signOut($this->sessId);
-        $this->ajaxReturn([
-                'status'	=>	200,
-        ]);
+        session('admin', null);
+
+        $this->ajaxReturn(array(
+            'status'    =>  200,
+        ));
+    }
+
+    /**
+     * 处理添加一级分类请求
+     */
+    public function postEditOneLevelCategory() {
+        $result = D('Common/Category')->editOneLevelCategory($_POST, $_FILES);
+
+        $this->simpleAjaxReturn($result);
     }
 
 }

@@ -20,3 +20,33 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container -->
 </nav>
+
+<script type="text/javascript" charset="utf-8">
+var navG = {
+    "postSignOutUrl":       "{:U('Api/Admin/postSignOut')}",
+    "adminIndexUrl":        "{:U('Index/index')}"
+};
+
+window.addEventListener("load", function() {
+
+    // 注销操作
+    $("#signOutBtn").bind("click", function() {
+        // 确定框
+        if (!confirm("您确定要注销吗？")) {
+            return false;
+        }
+        // 执行注销操作
+        $.post(navG.postSignOutUrl, function(data) {
+            console.log(data);
+
+            if (data.status != 200) {
+                alert(data.msg);
+            }
+
+            // 注销成功，跳转到登录页面
+            location = navG.adminIndexUrl;
+        }, "json");
+    });
+
+});
+</script>

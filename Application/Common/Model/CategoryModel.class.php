@@ -12,14 +12,12 @@ class CategoryModel extends CommonModel {
         'name'      =>  array('name', '/^.{2,8}$/u', '分类名称必须为2～8个字符！', 1, 'regex'),
         'remark'    =>  array('remark', '/^[\s\S]{0,255}$/', '分类描述应该少于255个字符', 1, 'regex'),
         'parent_id' =>  array('parent_id', '/^\d+$/', '分类的上一级id必须为数字', 1, 'regex'),
-        'pic_path'  =>  array('pic_path', 'require', '没有图片路径'),
     );
 
-    public function addOneLevelCategory($inputs) {
+    public function editOneLevelCategory($inputs, $files) {
         $rules = array(
             $this->validateRules['name'],
             $this->validateRules['remark'],
-            $this->validateRules['pic_path'],
         );
 
         // 验证输入
@@ -27,12 +25,31 @@ class CategoryModel extends CommonModel {
             return $this->getError();
         }
 
-        // 插入数据库
-        $result = $this->add();
+        // 插入操作或者更新操作需要修改logo图片时，检验图片合法性
+        if (empty($inputs['id']) || isset($files['logo'])) {
+            list($filepath, $err) = \Util\Upload::handleImgUpload(
+                $files['logo'], 2*1024*1024, UPLOAD_PATH.'category/', array(100, 100)
+            );
+
+            if ($err !== null) {
+                return $err;
+            }
+
+            $this->pic_path = $filepath;
+        }
+
+        if (empty($inputs['id'])) {
+            // 插入操作
+            $result = $this->add();
+        } else {
+            // 更新操作
+            $result = $this->save();
+        }
 
         if ($result === false) {
             return '数据库出错';
         }
+
         return true;
     }
 

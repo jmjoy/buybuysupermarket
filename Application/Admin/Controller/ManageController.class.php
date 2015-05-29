@@ -17,12 +17,19 @@ class ManageController extends AdminAuthController {
         $this->display();
     }
 
+    /**
+     * phpinfo页面
+     */
     public function phpinfo() {
         $this->display();
     }
 
+    /**
+     * phpinfo页面的iframe调用
+     */
     public function phpinfoPage() {
         phpinfo();
     }
+
 
 }

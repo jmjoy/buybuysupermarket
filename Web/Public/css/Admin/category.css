@@ -1,9 +1,9 @@
 #editPicImg {
     width: 100px;
+    height: 100px;
     cursor: pointer;
+    vertical-align: top;
 }
-#editPicInput {
-    display: inline;
+#editPicTip, #editPicInput {
     margin-left: 1em;
-    width: 50%;
 }

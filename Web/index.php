@@ -20,6 +20,7 @@ define('APP_DEBUG', True);
 // 定义应用目录
 define('APP_PATH', dirname(__DIR__). '/Application/');
 define('THINK_PATH', dirname(__DIR__). '/vendor/topthink/thinkphp/ThinkPHP/');
+define('UPLOAD_PATH', __DIR__ . '/Public/upload/');
 
 // 引入ThinkPHP入口文件
 require THINK_PATH . 'ThinkPHP.php';

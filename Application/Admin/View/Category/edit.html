@@ -10,9 +10,13 @@
         <div class="col-md-6 col-md-offset-3">
             <form id="editForm">
                 <h2 class="text-center">编辑一级分类</h2>
+                <div>
+                    <a href="javascript:history.back(-1);" class="btn btn-sm btn-default">← 返回</a>
+                </div>
+                <input type="hidden" id="editIdInput" value="" />
                 <hr />
                 <div class="form-group">
-                    <label for="editNameInput">分类名</label>
+                    <label for="editNameInput"> <span class="color-danger">*</span> 分类名</label>
                     <input type="text" id="editNameInput" class="form-control" placeholder="2~8个字符" />
                 </div>
                 <div class="form-group">
@@ -20,11 +24,16 @@
                     <textarea id="editRemarkInput" class="form-control" placeholder="少于255个字符"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="editPicInput" class="block">分类LOGO</label>
+                    <label for="editPicInput" class="block"> 分类LOGO （新增分类时必填）</label>
                     <img src="__IMG__/default_frame.png" alt="LOGO" id="editPicImg" class="img-responsive img-rounded inline-block" />
-                    <input type="file" id="editPicInput" class="form-control" />
+                    <div class="inline-block">
+                        <input type="file" id="editPicInput" class="form-control" />
+                        <p id="editPicTip">
+                            <em>1.只能上传jpg、png、bmp格式的图片 <br /> 2.图片不能超过2M</em>
+                        </p>
+                    </div>
                 </div>
-                <hr />
+                <hr /> <em> 带 <span class="color-danger">*</span> 为必填项 </em> <hr />
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block">完成</button>
                 </div>
@@ -47,7 +56,7 @@
 <block name="js">
     <script type="text/javascript" charset="utf-8">
         var g = {
-            "addOneLevelCategoryUrl":   "{:U('Api/Admin/postAddOneLevelCategory')}"
+            "editOneLevelCategoryUrl":   "{:U('Api/Admin/postEditOneLevelCategory')}",
         };
     </script>
     <script src="__JS__/Admin/category.js" type="text/javascript" charset="utf-8"></script>
