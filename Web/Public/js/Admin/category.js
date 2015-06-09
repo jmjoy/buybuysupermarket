@@ -90,6 +90,8 @@ $(function() {
                 // 成功了
                 showSuccess("操作成功");
                 $("input,textarea").val("");
+                $("#editPicImg").attr("src", g.defaultFrameIcon);
+
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 // 恢复被禁用

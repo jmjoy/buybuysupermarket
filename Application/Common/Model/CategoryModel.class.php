@@ -14,6 +14,43 @@ class CategoryModel extends CommonModel {
         'parent_id' =>  array('parent_id', '/^\d+$/', '分类的上一级id必须为数字', 1, 'regex'),
     );
 
+    /**
+     * 以id获取一个分类的信息
+     */
+    public function getCategory($id) {
+        $result = $this->field(true)->where('id=%d', $id)->find();
+
+        if ($result === false) {
+            return '数据库出错';
+        }
+
+        if ($result === null) {
+            return '分类不存在';
+        }
+
+        return $result;
+    }
+
+    /**
+     * 以分级形式列出所有分类
+     */
+    public function listCategory() {
+        $result = $this->field(true)->select();
+
+        if ($result === false) {
+            return '数据库出错';
+        }
+
+        if ($result === null) {
+            return '暂无分类';
+        }
+
+        return $result;
+    }
+
+    /**
+     * 添加或修改一级分类
+     */
     public function editOneLevelCategory($inputs, $files) {
         $rules = array(
             $this->validateRules['name'],

@@ -13,10 +13,16 @@
             </div>
         </div>
 
+        <?php if (!is_array($data)): ?>
+
+        <div class="alert alert-warning">{$result}</div>
+
+        <?php else: ?>
+
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <hr />
-                <table class="table table-striped">
+                <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th></th>
@@ -29,19 +35,21 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php foreach ($data as $row): ?>
                         <tr>
                             <td><input type="checkbox" /></td>
-                            <td>1</td>
-                            <td><img src="" alt=""></td>
-                            <td>Category_name</td>
-                            <td>Category_remark</td>
-                            <td>0</td>
+                            <td>{$row.id}</td>
+                            <td><img src="__UPLOAD__/category/{$row.pic_path}" alt=""></td>
+                            <td>{$row.name}</td>
+                            <td>{$row.remark}</td>
+                            <td>{$row.level}</td>
                             <td>
                                 <button type="button" class="btn btn-sm btn-info">添加子分类</button>
-                                <button type="button" class="btn btn-sm btn-warning">编辑</button>
+                                <a href="{:U('Category/update', array('id'=>$row['id']))}" class="btn btn-sm btn-warning">编辑</a>
                                 <button type="button" class="btn btn-sm btn-danger">删除</button>
                             </td>
                         </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
@@ -55,6 +63,8 @@
                 <button type="button" class="btn btn-sm btn-danger">批量删除</button>
             </div>
         </div>
+
+        <?php endif; ?>
 
     </div>	<!-- /container -->
 
