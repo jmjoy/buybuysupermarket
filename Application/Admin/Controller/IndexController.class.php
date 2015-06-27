@@ -16,9 +16,26 @@ class IndexController extends CommonController {
     public function index() {
         // 已经登录了就跳转到管理页面
         if (isset($_SESSION['admin']['id'])) {
-            $this->redirect('Manage/index');
+            $this->redirect('manage');
         }
+        $this->display();
+    }
 
+    /**
+     * 管理员界面
+     */
+    public function manage() {
+        $this->display();
+    }
+
+    /**
+     * phpinfo页面
+     */
+    public function phpinfo() {
+        if (isset($_GET['info'])) {
+            phpinfo();
+            return;
+        }
         $this->display();
     }
 

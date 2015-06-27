@@ -8,7 +8,7 @@ use Admin\Controller\AdminAuthController;
  * @author jmjoy
  *
  */
-class CategoryController extends AdminAuthController {
+class CategoryController extends CommonController {
 
     /**
      * 管理首页
